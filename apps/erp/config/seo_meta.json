@@ -1,0 +1,23 @@
+{
+  "title": "Scalp Time Haarpigmentierung: Beste Lösung bei Haarausfall",
+  "titleTemplate": "%s - Scalp Time",
+  "description": "Bei Scalp Time erhalten Sie innovative Lösungen zum Haarausfall in Leonberg auch mit hervorragendem Service. Kommen Sie vorsichtig sein, um mehr über",
+  "openGraph": {
+    "title": "Scalp Time Haarpigmentierung: Beste Lösung bei Haarausfall",
+    "description": "Bei Scalp Time erhalten Sie innovative Lösungen zum Haarausfall in Leonberg auch mit hervorragendem Service. Kommen Sie vorsichtig sein, um mehr über",
+    "type": "website",
+    "url": "https://www.scalp-time.de",
+    "site_name": "Scalp Time",
+    "images": [{
+      "url": "https://www.scalp-time.de/static/images/scalp-time.webp",
+      "width": "1200",
+      "height": "630",
+      "alt": "Scalp Time"
+    }]
+  },
+  "twitter": {
+    "handle": "@scalp_time_de",
+    "site": "@scalp_time_de",
+    "cardType": "summary_large_image"
+  }
+}
