@@ -3,11 +3,13 @@
     "baseUrl": ".",
     "paths": {
       "@libraries/*": ["libraries/*"],
-      "@utils/*": ["utils/*"],
-      "@views/*": ["views/*"],
       "@config/*": ["config/*"],
+      "@views/*": ["views/*"],
+      "@models/*": ["models/*"],
       "@assets/*": ["assets/*"],
-      "@components/*": ["components/*"]
+      "@components/*": ["components/*"],
+      "@constant/*": ["constant/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "extends": "tsconfig/nextjs.json",
