@@ -1,7 +1,7 @@
 import React from "react";
 import { useSession } from "next-auth/react";
 
-interface IndexPageType { }
+interface IndexPageType {}
 
 const IndexPage = ({ ...props }: IndexPageType) => {
   const { data: session } = useSession();

@@ -31,12 +31,10 @@ export const getStaticProps = async () => {
     props: {
       seo: {
         title: "Template",
-        description:
-          "Template",
+        description: "Template",
         openGraph: {
           title: "Template",
-          description:
-            "Template",
+          description: "Template",
         },
       },
     },

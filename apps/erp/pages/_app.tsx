@@ -22,7 +22,7 @@ async function checkLogin(callBack: any) {
   if (!session) {
     signIn("auth0", { callbackUrl: window.location.href });
   } else {
-    callBack(true)
+    callBack(true);
   }
 }
 
@@ -41,7 +41,10 @@ export default function MyApp({
 
   const queryClient = new QueryClient();
 
-  if (!sessionLog) return <Loading_1 width={400} image_1={"/static/images/nteprojects-logo.webp"} />;
+  if (!sessionLog)
+    return (
+      <Loading_1 width={400} image_1={"/static/images/nteprojects-logo.webp"} />
+    );
 
   return getLayout(
     <QueryClientProvider client={queryClient}>
