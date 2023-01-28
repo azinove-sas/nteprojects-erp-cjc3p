@@ -61,7 +61,7 @@ export const menuItem = [
   {
     title: "Administration",
     icon: <MdAdminPanelSettings />,
-    url: "/about",
+    url: "/admin",
     submenu: [
       {
         title: "Permissions",

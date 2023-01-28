@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Dropdown from "./Dropdown";
-import { Box, Flex, Text, Link } from "rebass";
+import { Box, Flex, Text } from "rebass";
+import Link from "next/link";
 import { BiDownArrow, BiRightArrow } from "react-icons/bi";
 
 
@@ -61,36 +62,35 @@ const MenuItems = ({ items, depthLevel }: any) => {
             {window.innerWidth < 960 && depthLevel === 0 ? (
               items.title
             ) : (
-              <Flex sx={{
-                alignItems: 'center',
-                cursor: 'pointer',
-                borderRadius: '0.4rem',
-                position: 'relative',
-                paddingBlock: '0.5rem',
-                paddingInline: '0.7rem',
-                minWidth: "100px"
-                // ":hover": {
-                //   'opacity': 'calc(.04 * 1)',
-                // }
-              }}>
-                {items.icon && (
-                  <Box sx={{
-                    fontSize: '1.375rem',
-                    marginInlineEnd: '0.625rem',
-                    blockSize: '1em',
-                    inlineSize: '1em',
-                  }}>
-                    {items.icon}
-                  </Box>
-                )}
-                <Link as={'span'} href={items.url} sx={{
-                  marginInlineEnd: '0.3rem',
-                  whiteSpace: 'nowrap',
-                  letterSpacing: '.15px',
+              <Link as={items.url} href={items.url}>
+                <Flex sx={{
+                  alignItems: 'center',
+                  cursor: 'pointer',
+                  borderRadius: '0.4rem',
+                  position: 'relative',
+                  paddingBlock: '0.5rem',
+                  paddingInline: '0.7rem',
+                  minWidth: "100px"
                 }}>
-                  {items.title}
-                </Link>
-              </Flex>
+                  {items.icon && (
+                    <Box sx={{
+                      fontSize: '1.375rem',
+                      marginInlineEnd: '0.625rem',
+                      blockSize: '1em',
+                      inlineSize: '1em',
+                    }}>
+                      {items.icon}
+                    </Box>
+                  )}
+                  <Link as={items.url} href={items.url} style={{
+                    marginInlineEnd: '0.3rem',
+                    whiteSpace: 'nowrap',
+                    letterSpacing: '.15px',
+                  }}>
+                    {items.title}
+                  </Link>
+                </Flex>
+              </Link>
             )}
 
             {depthLevel > 0 && window.innerWidth < 960 ? null : depthLevel >
@@ -156,7 +156,7 @@ const MenuItems = ({ items, depthLevel }: any) => {
                 {items.icon}
               </Box>
             )}
-            <Link as={'span'} href={items.url} sx={{
+            <Link as={items.url} href={items.url} style={{
               marginInlineEnd: '0.3rem',
               whiteSpace: 'nowrap',
               letterSpacing: '.15px',
