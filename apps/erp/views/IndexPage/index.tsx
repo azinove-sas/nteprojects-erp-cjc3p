@@ -1,13 +1,15 @@
 import React from "react";
 import { useSession } from "next-auth/react";
+import { Box } from "rebass";
+import Content from "@views/common/content";
 
-interface IndexPageType {}
+interface IndexPageType { }
 
 const IndexPage = ({ ...props }: IndexPageType) => {
   const { data: session } = useSession();
 
   return (
-    <>
+    <Content>
       {session && (
         <>
           Signed in as{" "}
@@ -18,7 +20,7 @@ const IndexPage = ({ ...props }: IndexPageType) => {
           <br />
         </>
       )}
-    </>
+    </Content>
   );
 };
 
