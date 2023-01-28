@@ -11,6 +11,7 @@ const MenuItems = ({ items, depthLevel }: any) => {
 
   useEffect(() => {
     const handler = (event: any) => {
+      // @ts-ignore
       if (dropdown && ref.current && !ref.current.contains(event.target)) {
         setDropdown(false);
       }
