@@ -1,4 +1,11 @@
-import { MdOutlineDashboard, MdOutlineAnalytics, MdAdminPanelSettings, MdQrCode2, MdOutlinePermIdentity, MdMoreHoriz } from "react-icons/md";
+import {
+  MdOutlineDashboard,
+  MdOutlineAnalytics,
+  MdAdminPanelSettings,
+  MdQrCode2,
+  MdOutlinePermIdentity,
+  MdMoreHoriz,
+} from "react-icons/md";
 import { VscServer } from "react-icons/vsc";
 import { SiCivicrm } from "react-icons/si";
 import { BsPersonBoundingBox } from "react-icons/bs";

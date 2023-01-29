@@ -9,10 +9,9 @@
   "scripts": {
     "build": "turbo run build --color",
     "start": "cd apps/landing && yarn start",
-    "dev": "yarn pull && turbo run dev --parallel",
+    "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "pull": "git pull --recurse-submodules"
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
     "eslint-config-custom": "*",

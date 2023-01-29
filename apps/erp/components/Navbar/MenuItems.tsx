@@ -4,7 +4,6 @@ import { Box, Flex, Text } from "rebass";
 import Link from "next/link";
 import { BiDownArrow, BiRightArrow } from "react-icons/bi";
 
-
 const MenuItems = ({ items, depthLevel }: any) => {
   const [dropdown, setDropdown] = useState(false);
 
@@ -50,43 +49,51 @@ const MenuItems = ({ items, depthLevel }: any) => {
       {items.url && items.submenu ? (
         <>
           <Box
-            as={'button'}
+            as={"button"}
             type="button"
             aria-haspopup="menu"
             aria-expanded={dropdown ? "true" : "false"}
             onClick={() => setDropdown((prev) => !prev)}
             sx={{
-              color: 'rgba(51, 48, 60, 0.68)'
+              color: "rgba(51, 48, 60, 0.68)",
             }}
           >
             {window.innerWidth < 960 && depthLevel === 0 ? (
               items.title
             ) : (
               <Link as={items.url} href={items.url}>
-                <Flex sx={{
-                  alignItems: 'center',
-                  cursor: 'pointer',
-                  borderRadius: '0.4rem',
-                  position: 'relative',
-                  paddingBlock: '0.5rem',
-                  paddingInline: '0.7rem',
-                  minWidth: "100px"
-                }}>
+                <Flex
+                  sx={{
+                    alignItems: "center",
+                    cursor: "pointer",
+                    borderRadius: "0.4rem",
+                    position: "relative",
+                    paddingBlock: "0.5rem",
+                    paddingInline: "0.7rem",
+                    minWidth: "100px",
+                  }}
+                >
                   {items.icon && (
-                    <Box sx={{
-                      fontSize: '1.375rem',
-                      marginInlineEnd: '0.625rem',
-                      blockSize: '1em',
-                      inlineSize: '1em',
-                    }}>
+                    <Box
+                      sx={{
+                        fontSize: "1.375rem",
+                        marginInlineEnd: "0.625rem",
+                        blockSize: "1em",
+                        inlineSize: "1em",
+                      }}
+                    >
                       {items.icon}
                     </Box>
                   )}
-                  <Link as={items.url} href={items.url} style={{
-                    marginInlineEnd: '0.3rem',
-                    whiteSpace: 'nowrap',
-                    letterSpacing: '.15px',
-                  }}>
+                  <Link
+                    as={items.url}
+                    href={items.url}
+                    style={{
+                      marginInlineEnd: "0.3rem",
+                      whiteSpace: "nowrap",
+                      letterSpacing: ".15px",
+                    }}
+                  >
                     {items.title}
                   </Link>
                 </Flex>
@@ -94,7 +101,7 @@ const MenuItems = ({ items, depthLevel }: any) => {
             )}
 
             {depthLevel > 0 && window.innerWidth < 960 ? null : depthLevel >
-              0 && window.innerWidth > 960 ? (
+                0 && window.innerWidth > 960 ? (
               <BiRightArrow />
             ) : (
               <BiDownArrow />
@@ -114,8 +121,7 @@ const MenuItems = ({ items, depthLevel }: any) => {
             aria-expanded={dropdown ? "true" : "false"}
             onClick={() => setDropdown((prev) => !prev)}
           >
-            {items.title}{" "}
-            {depthLevel > 0 ? <BiRightArrow /> : <BiDownArrow />}
+            {items.title} {depthLevel > 0 ? <BiRightArrow /> : <BiDownArrow />}
           </button>
           <Dropdown
             depthLevel={depthLevel}
@@ -125,49 +131,56 @@ const MenuItems = ({ items, depthLevel }: any) => {
         </>
       ) : (
         <Box
-          as={'button'}
+          as={"button"}
           type="button"
           aria-haspopup="menu"
           aria-expanded={dropdown ? "true" : "false"}
           onClick={() => setDropdown((prev) => !prev)}
           sx={{
-            color: 'rgba(51, 48, 60, 0.68)'
+            color: "rgba(51, 48, 60, 0.68)",
           }}
         >
-          <Flex sx={{
-            alignItems: 'center',
-            cursor: 'pointer',
-            borderRadius: '0.4rem',
-            position: 'relative',
-            paddingBlock: '0.5rem',
-            paddingInline: '0.7rem',
-            minWidth: "100px"
-            // ":hover": {
-            //   'opacity': 'calc(.04 * 1)',
-            // }
-          }}>
+          <Flex
+            sx={{
+              alignItems: "center",
+              cursor: "pointer",
+              borderRadius: "0.4rem",
+              position: "relative",
+              paddingBlock: "0.5rem",
+              paddingInline: "0.7rem",
+              minWidth: "100px",
+              // ":hover": {
+              //   'opacity': 'calc(.04 * 1)',
+              // }
+            }}
+          >
             {items.icon && (
-              <Box sx={{
-                fontSize: '1.375rem',
-                marginInlineEnd: '0.625rem',
-                blockSize: '1em',
-                inlineSize: '1em',
-              }}>
+              <Box
+                sx={{
+                  fontSize: "1.375rem",
+                  marginInlineEnd: "0.625rem",
+                  blockSize: "1em",
+                  inlineSize: "1em",
+                }}
+              >
                 {items.icon}
               </Box>
             )}
-            <Link as={items.url} href={items.url} style={{
-              marginInlineEnd: '0.3rem',
-              whiteSpace: 'nowrap',
-              letterSpacing: '.15px',
-            }}>
+            <Link
+              as={items.url}
+              href={items.url}
+              style={{
+                marginInlineEnd: "0.3rem",
+                whiteSpace: "nowrap",
+                letterSpacing: ".15px",
+              }}
+            >
               {items.title}
             </Link>
           </Flex>
         </Box>
-      )
-      }
-    </Box >
+      )}
+    </Box>
   );
 };
 

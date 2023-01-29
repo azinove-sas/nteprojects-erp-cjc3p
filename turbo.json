@@ -3,7 +3,7 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["CLIENT_ID", "CLIENT_SECRET", "AUTH_SECRET", "URL", "MONGODB_URI"],
+      "env": ["CLIENT_ID", "CLIENT_SECRET", "AUTH_SECRET", "NEXT_PUBLIC_URL", "MONGODB_URI", "AUTH0_DOMAIN"],
       "outputs": ["dist/**", ".next/**"]
     },
     "lint": {
