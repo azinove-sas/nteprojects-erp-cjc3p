@@ -35,6 +35,8 @@ export default NextAuth({
           role: ROLE.default,
           lastLogin: new Date(),
         });
+        user.id = res.id;
+        user.role = res.role;
       } else {
         update(ref(DB, "/USERS/" + user.id), {
           lastLogin: new Date(),
