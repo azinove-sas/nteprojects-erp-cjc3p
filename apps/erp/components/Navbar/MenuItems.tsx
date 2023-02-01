@@ -39,7 +39,6 @@ const MenuItems = ({ items, depthLevel, userRole }: any) => {
 
   return (
     <>
-
       <Box
         as={"li"}
         className="menu-items"
@@ -104,8 +103,9 @@ const MenuItems = ({ items, depthLevel, userRole }: any) => {
                     </Link>
                   )}
 
-                  {depthLevel > 0 && window.innerWidth < 960 ? null : depthLevel >
-                    0 && window.innerWidth > 960 ? (
+                  {depthLevel > 0 &&
+                  window.innerWidth < 960 ? null : depthLevel > 0 &&
+                    window.innerWidth > 960 ? (
                     <BiRightArrow />
                   ) : (
                     <BiDownArrow />
@@ -118,8 +118,7 @@ const MenuItems = ({ items, depthLevel, userRole }: any) => {
                   userRole={userRole}
                 />
               </>
-            )
-            }
+            )}
           </>
         ) : !items.url && items.submenu ? (
           <>
@@ -129,7 +128,8 @@ const MenuItems = ({ items, depthLevel, userRole }: any) => {
               aria-expanded={dropdown ? "true" : "false"}
               onClick={() => setDropdown((prev) => !prev)}
             >
-              {items.title} {depthLevel > 0 ? <BiRightArrow /> : <BiDownArrow />}
+              {items.title}{" "}
+              {depthLevel > 0 ? <BiRightArrow /> : <BiDownArrow />}
             </button>
             <Dropdown
               depthLevel={depthLevel}

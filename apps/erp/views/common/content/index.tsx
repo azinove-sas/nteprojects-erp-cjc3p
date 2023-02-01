@@ -9,6 +9,7 @@ const Content = ({ ...props }: ContentType) => {
   return (
     <Box
       sx={{
+        display: "block",
         paddingBlock: "1.5rem",
         inlineSize: "100%",
         marginInline: "auto",
