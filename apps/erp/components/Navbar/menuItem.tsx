@@ -28,22 +28,22 @@ export const menuItem = [
     url: "/services",
     submenu: [
       {
-        title: "QR Code Generation",
+        title: "Certification Generation",
         icon: <MdQrCode2 />,
         role: ROLE.default,
-        url: "web-design",
+        url: "/certification",
         submenu: [
           {
             title: "List",
             icon: <AiOutlineOrderedList />,
             role: ROLE.default,
-            url: "web-design",
+            url: "/certification/list",
           },
           {
-            title: "add",
+            title: "Add",
             icon: <AiFillFileAdd />,
-            role: ROLE.default,
-            url: "web-design",
+            role: ROLE.admin,
+            url: "/certification/add",
           },
         ],
       },
