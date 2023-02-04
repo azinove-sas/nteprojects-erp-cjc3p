@@ -14,6 +14,7 @@ const SettingPage = ({ ...props }: SettingPageType) => {
     // @ts-ignore
     const { data: data, isLoading } = useAccount(session?.user?.id);
 
+
     if (isLoading) return <Text as={"p"}>Loading...</Text>;
 
     return (
