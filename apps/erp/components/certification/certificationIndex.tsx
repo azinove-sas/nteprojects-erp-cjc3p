@@ -1,4 +1,4 @@
-import Certification0 from "./certification/certification0";
+import Certification0 from "./certification0";
 
 export const certificationIndex = [
     {

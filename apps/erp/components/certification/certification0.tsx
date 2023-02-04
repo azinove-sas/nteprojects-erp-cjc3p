@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import QRCode from "qrcode";
 import { Box, Image, Flex } from "rebass";
 
-
 interface Certification0Type { }
 
 const Certification0 = ({ ...props }: Certification0Type) => {
@@ -13,9 +12,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
     useEffect(() => {
         QRCode.toCanvas(
             canvasRef.current,
-            // QR code doesn't work with an empty string
-            // so we are using a blank space as a fallback
-            text || process.env.NEXT_PUBLIC_URL + "/shared/demos",
+            text || process.env.NEXT_PUBLIC_URL + "/",
             (error: any) => error && console.error(error)
         );
     }, [text]);
@@ -61,7 +58,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                 </Flex>
                 <Flex width={'100%'} alignItems={'center'} my={2}>
                     <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
-                        Equipment Name
+                        Equipment Type
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
                         :.......................................................
