@@ -104,8 +104,8 @@ const MenuItems = ({ items, depthLevel, userRole }: any) => {
                   )}
 
                   {depthLevel > 0 &&
-                  window.innerWidth < 960 ? null : depthLevel > 0 &&
-                    window.innerWidth > 960 ? (
+                    window.innerWidth < 960 ? null : depthLevel > 0 &&
+                      window.innerWidth > 960 ? (
                     <BiRightArrow />
                   ) : (
                     <BiDownArrow />

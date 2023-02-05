@@ -1,21 +1,31 @@
 import React, { useEffect, useState, useRef } from "react";
 import QRCode from "qrcode";
 import { Box, Image, Flex } from "rebass";
+import { Input } from "@rebass/forms";
 
-interface Certification0Type { }
+interface Certification0Type {
+    equipmentNo?: string,
+    equipmentSNo?: string,
+    equipmentType?: string,
+    inspectedBy?: string,
+    inspectionDate?: string,
+    nextInspectionDate?: string,
+    stickerNo?: string;
+    edit?: true;
+    link?: string;
+}
 
 const Certification0 = ({ ...props }: Certification0Type) => {
 
-    const [text, setText] = useState("");
     const canvasRef = useRef();
 
     useEffect(() => {
         QRCode.toCanvas(
             canvasRef.current,
-            text || process.env.NEXT_PUBLIC_URL + "/",
+            props.link || process.env.NEXT_PUBLIC_URL + "/",
             (error: any) => error && console.error(error)
         );
-    }, [text]);
+    }, [props.link]);
 
 
     return (
@@ -53,7 +63,13 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         Sticker No.
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
-                        :.......................................................
+                        {props.edit ? (
+                            <Input value={props.stickerNo} />
+                        ) : (
+                            <>
+                                {props.stickerNo ? props.stickerNo : ":......................................................."}
+                            </>
+                        )}
                     </Box>
                 </Flex>
                 <Flex width={'100%'} alignItems={'center'} my={2}>
@@ -61,7 +77,13 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         Equipment Type
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
-                        :.......................................................
+                        {props.edit ? (
+                            <Input value={props.equipmentType} />
+                        ) : (
+                            <>
+                                {props.equipmentType ? props.equipmentType : ":......................................................."}
+                            </>
+                        )}
                     </Box>
                 </Flex>
                 <Flex width={'100%'} alignItems={'center'} my={2}>
@@ -69,7 +91,13 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         Equipment No.
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
-                        :.......................................................
+                        {props.edit ? (
+                            <Input value={props.equipmentNo} />
+                        ) : (
+                            <>
+                                {props.equipmentNo ? props.equipmentNo : ":......................................................."}
+                            </>
+                        )}
                     </Box>
                 </Flex>
                 <Flex width={'100%'} alignItems={'center'} my={2}>
@@ -77,7 +105,13 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         Equipment S.No.
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
-                        :.......................................................
+                        {props.edit ? (
+                            <Input value={props.equipmentSNo} />
+                        ) : (
+                            <>
+                                {props.equipmentSNo ? props.equipmentSNo : ":......................................................."}
+                            </>
+                        )}
                     </Box>
                 </Flex>
                 <Flex width={'100%'} alignItems={'center'} my={2}>
@@ -85,7 +119,13 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         Inspection Date
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
-                        :.......................................................
+                        {props.edit ? (
+                            <Input value={props.inspectionDate} />
+                        ) : (
+                            <>
+                                {props.inspectionDate ? props.inspectionDate : ":......................................................."}
+                            </>
+                        )}
                     </Box>
                 </Flex>
                 <Flex width={'100%'} alignItems={'center'} my={2}>
@@ -93,7 +133,13 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         Next Inspection Date
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
-                        :.......................................................
+                        {props.edit ? (
+                            <Input value={props.nextInspectionDate} />
+                        ) : (
+                            <>
+                                {props.nextInspectionDate ? props.nextInspectionDate : ":......................................................."}
+                            </>
+                        )}
                     </Box>
                 </Flex>
                 <Flex width={'100%'} alignItems={'center'} my={2}>
@@ -101,11 +147,17 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         Inspected By
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
-                        :.......................................................
+                        {props.edit ? (
+                            <Input value={props.inspectedBy} />
+                        ) : (
+                            <>
+                                {props.inspectedBy ? props.inspectedBy : ":......................................................."}
+                            </>
+                        )}
                     </Box>
                 </Flex>
             </Flex>
-        </Flex>
+        </Flex >
     );
 };
 
