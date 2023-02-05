@@ -32,19 +32,40 @@ const Certification0 = ({ ...props }: Certification0Type) => {
     return (
         <Flex flexDirection={'column'} width={'50%'} backgroundColor={'white'} p={3} sx={{
             boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+            "@media (max-width: 960px)": {
+                width: '100%',
+            }
         }}>
-            <Flex flexDirection={'row'} py={1}>
-                <Flex width={'25%'} alignItems={'center'}>
+            <Flex flexDirection={'row'} py={1} sx={{
+                "@media (max-width: 960px)": {
+                    flexDirection: 'column',
+                    textAlign: 'center',
+                }
+            }}>
+                <Flex width={'25%'} alignItems={'center'} sx={{
+                    "@media (max-width: 960px)": {
+                        width: '100%',
+                    }
+                }}>
                     <Image src="/static/images/logo/logo-transparent.webp" width={'100%'} alt={'logo'} />
                 </Flex>
-                <Flex width={'50%'} fontWeight={700} alignItems={'center'} justifyContent={'center'}>
+                <Flex width={'50%'} fontWeight={700} alignItems={'center'} justifyContent={'center'} sx={{
+                    "@media (max-width: 960px)": {
+                        width: '100%',
+                    }
+                }}>
                     TUV Rheinland Arabia LLC, <br />
                     PO BOX 11488, Jeddah 21453, KSA <br />
                     Tel No.: +966(12) 6019230 <br />
                     +966(13) 8664906 <br />
                     Email: IS-lifting@sa.tuv.om <br />
                 </Flex>
-                <Flex width={'25%'} alignItems={'center'}>
+                <Flex width={'25%'} alignItems={'center'} sx={{
+                    "@media (max-width: 960px)": {
+                        width: '100%',
+                        justifyContent: 'center'
+                    }
+                }}>
                     <Box as={'canvas'} ref={canvasRef} />
                 </Flex>
             </Flex>
@@ -59,7 +80,12 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                 borderWidth: 'thin 0 0 0',
             }} />
             <Flex flexDirection={'column'} py={3}>
-                <Flex width={'100%'} alignItems={'center'} my={2}>
+                <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    "@media (max-width: 960px)": {
+                        textAlign: 'center',
+                        flexDirection: 'column',
+                    }
+                }}>
                     <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
                         Sticker No.
                     </Box>
@@ -73,7 +99,12 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         )}
                     </Box>
                 </Flex>
-                <Flex width={'100%'} alignItems={'center'} my={2}>
+                <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    "@media (max-width: 960px)": {
+                        textAlign: 'center',
+                        flexDirection: 'column',
+                    }
+                }}>
                     <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
                         Equipment Type
                     </Box>
@@ -87,7 +118,12 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         )}
                     </Box>
                 </Flex>
-                <Flex width={'100%'} alignItems={'center'} my={2}>
+                <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    "@media (max-width: 960px)": {
+                        textAlign: 'center',
+                        flexDirection: 'column',
+                    }
+                }}>
                     <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
                         Equipment No.
                     </Box>
@@ -101,7 +137,12 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         )}
                     </Box>
                 </Flex>
-                <Flex width={'100%'} alignItems={'center'} my={2}>
+                <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    "@media (max-width: 960px)": {
+                        textAlign: 'center',
+                        flexDirection: 'column',
+                    }
+                }}>
                     <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
                         Equipment S.No.
                     </Box>
@@ -115,7 +156,12 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         )}
                     </Box>
                 </Flex>
-                <Flex width={'100%'} alignItems={'center'} my={2}>
+                <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    "@media (max-width: 960px)": {
+                        textAlign: 'center',
+                        flexDirection: 'column',
+                    }
+                }}>
                     <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
                         Inspection Date
                     </Box>
@@ -129,7 +175,12 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         )}
                     </Box>
                 </Flex>
-                <Flex width={'100%'} alignItems={'center'} my={2}>
+                <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    "@media (max-width: 960px)": {
+                        textAlign: 'center',
+                        flexDirection: 'column',
+                    }
+                }}>
                     <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
                         Next Inspection Date
                     </Box>
@@ -143,7 +194,12 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         )}
                     </Box>
                 </Flex>
-                <Flex width={'100%'} alignItems={'center'} my={2}>
+                <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    "@media (max-width: 960px)": {
+                        textAlign: 'center',
+                        flexDirection: 'column',
+                    }
+                }}>
                     <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
                         Inspected By
                     </Box>
