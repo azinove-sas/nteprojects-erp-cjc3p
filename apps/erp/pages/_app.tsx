@@ -7,6 +7,7 @@ import { SessionProvider } from "next-auth/react";
 import { signIn, getSession } from "next-auth/react";
 import { QueryClientProvider, QueryClient } from "react-query";
 import Loading_1 from "azinove/components/templates/loading/Loading_1";
+import { useRouter } from "next/router";
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -32,11 +33,17 @@ export default function MyApp({
 }: AppPropsWithLayout) {
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout ?? ((page) => page);
-
   const [sessionLog, setSessionLog] = useState<boolean>(false);
+  const permRouter = useRouter().asPath.split('/')[1];
+  const [permRoot, setPermRoot] = useState<string>(permRouter);
+
 
   useEffect(() => {
-    checkLogin(setSessionLog);
+    if (permRoot !== 'shared') {
+      checkLogin(setSessionLog);
+    } else {
+      setSessionLog(true);
+    }
   }, [sessionLog]);
 
   const queryClient = new QueryClient();

@@ -11,7 +11,7 @@ export default function useCertificat(
     ["certificat", page, perPage, email, role],
     async () => {
       const res = await axios.get(
-        `/api/certificat/getCetrificat?perPage=${perPage}&page=${page}&email=${email}&role=${role}`
+        `/api/certificat/getCertificat?perPage=${perPage}&page=${page}&email=${email}&role=${role}`
       );
       return res.data;
     },

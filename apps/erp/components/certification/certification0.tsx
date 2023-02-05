@@ -22,7 +22,8 @@ const Certification0 = ({ ...props }: Certification0Type) => {
     useEffect(() => {
         QRCode.toCanvas(
             canvasRef.current,
-            props.link || process.env.NEXT_PUBLIC_URL + "/",
+            // @ts-ignore
+            process.env.NEXT_PUBLIC_URL + props.link || process.env.NEXT_PUBLIC_URL + "/",
             (error: any) => error && console.error(error)
         );
     }, [props.link]);

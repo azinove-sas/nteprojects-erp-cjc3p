@@ -20,7 +20,6 @@ const Navbar = () => {
     getUserData();
   }, []);
 
-  console.log(userData);
 
   return (
     <>

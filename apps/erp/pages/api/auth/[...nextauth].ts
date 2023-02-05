@@ -60,7 +60,6 @@ export default NextAuth({
           role: user.role,
         };
       }
-      // console.log(token);
       return token;
     },
     // If we want to access our extra user info from sessions we have to pass it the token here to get them in sync:

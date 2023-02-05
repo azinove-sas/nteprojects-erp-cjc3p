@@ -7,7 +7,7 @@ import { ref, get } from "firebase/database";
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case "GET":
-      await generate(req, res);
+      await getCertificat(req, res);
       break;
 
     default:
@@ -15,7 +15,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       break;
   }
 }
-const generate = async (req: NextApiRequest, res: NextApiResponse) => {
+const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     let { perPage, page, email, role }: any = req.query;
     const DB = getDatabase(FirebaseApp);
@@ -38,7 +38,6 @@ const generate = async (req: NextApiRequest, res: NextApiResponse) => {
     const end = perPage * page;
     const start = end - perPage;
     let totalPages = Math.ceil(count / perPage);
-    console.log(totalPages);
 
     let resData: any = [];
     for (let i = start; i <= end - 1; i += 1) {

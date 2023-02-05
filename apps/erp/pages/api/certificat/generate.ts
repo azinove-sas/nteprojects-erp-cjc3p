@@ -29,7 +29,7 @@ const generate = async (req: NextApiRequest, res: NextApiResponse) => {
         certificateID: uuidNum,
         selectedCertificate: selectedCertificat,
         certificateInfo: selectedCertificatInfo(selectedCertificat),
-        sharedLink: process.env.NEXT_PUBLIC_URL + "/shared/" + uuidNum,
+        sharedLink: "/shared/certification/" + uuidNum,
         selectedUser: selectedUser,
         generated: new Date(),
         lastModification: new Date(),
