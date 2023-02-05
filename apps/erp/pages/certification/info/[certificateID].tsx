@@ -3,6 +3,8 @@ import type { NextPageWithLayout } from "../../_app";
 import Layout from "azinove/components/common/Layout";
 import React from "react";
 
+import type { GetStaticPaths } from "next";
+
 import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
 import InfoPage from "@views/CertificationPage/InfoPage";
