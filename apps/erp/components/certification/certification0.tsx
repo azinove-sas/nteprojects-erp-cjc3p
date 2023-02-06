@@ -30,7 +30,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
 
 
     return (
-        <Flex flexDirection={'column'} width={'50%'} backgroundColor={'white'} p={3} sx={{
+        <Flex flexDirection={'column'} width={'55%'} backgroundColor={'white'} p={3} sx={{
             boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
             "@media (max-width: 960px)": {
                 width: '100%',
@@ -42,15 +42,16 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     textAlign: 'center',
                 }
             }}>
-                <Flex width={'25%'} alignItems={'center'} sx={{
+                <Flex width={'35%'} alignItems={'center'} sx={{
                     "@media (max-width: 960px)": {
                         width: '100%',
                     }
                 }}>
-                    <Image src="/static/images/logo/logo-transparent.webp" width={'100%'} alt={'logo'} />
+                    <Image src="/static/images/logo/logo-transparent.webp" width={'100%'} height={'90%'} alt={'logo'} />
                 </Flex>
-                <Flex width={'50%'} fontWeight={700} alignItems={'center'} justifyContent={'center'} sx={{
+                <Flex width={'40%'} pl={2} fontWeight={700} alignItems={'center'} justifyContent={'center'} sx={{
                     "@media (max-width: 960px)": {
+                        pl: 0,
                         width: '100%',
                     }
                 }}>
