@@ -54,11 +54,10 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         width: '100%',
                     }
                 }}>
-                    TUV Rheinland Arabia LLC, <br />
-                    PO BOX 11488, Jeddah 21453, KSA <br />
-                    Tel No.: +966(12) 6019230 <br />
-                    +966(13) 8664906 <br />
-                    Email: IS-lifting@sa.tuv.om <br />
+                    Al Najm Al Thaqib Contracting Co.<br />
+                    PO BOX NO. 74, JUBAIL-31951, KSA <br />
+                    Tel No: +966 (13) 361 7065 / 7004 / 7005 <br />
+                    Email: info@nteprojects.com <br />
                 </Flex>
                 <Flex width={'25%'} alignItems={'center'} sx={{
                     "@media (max-width: 960px)": {
