@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import QRCode from "qrcode";
-import { Box, Image, Flex } from "rebass";
+import { Box, Image, Flex, Button, Text } from "rebass";
 import { Input } from "@rebass/forms";
 
 interface Certification0Type {
@@ -13,13 +13,37 @@ interface Certification0Type {
     stickerNo?: string;
     edit?: true;
     link?: string;
+    certificateID?: string;
 }
 
 const Certification0 = ({ ...props }: Certification0Type) => {
 
     const canvasRef = useRef();
 
+    const [stickerNo, setStickerNo] = useState<string>();
+    const [equipmentNo, setEquipmentNo] = useState<string>();
+    const [equipmentSNo, setEquipmentSNo] = useState<string>();
+    const [equipmentType, setEquipmentType] = useState<string>();
+    const [inspectedBy, setInspectedBy] = useState<string>();
+    const [inspectionDate, setInspectionDate] = useState<string>();
+    const [nextInspectionDate, setNextInspectionDate] = useState<string>();
+
+    const [success, setSuccess] = useState<boolean>(false);
+    const [error, setError] = useState<boolean>(false);
+    const [one, setOne] = useState<boolean>(false);
+
     useEffect(() => {
+        if (props.edit && !one) {
+            setStickerNo(props.stickerNo);
+            setEquipmentNo(props.equipmentNo);
+            setEquipmentSNo(props.equipmentSNo);
+            setEquipmentType(props.equipmentType);
+            setInspectedBy(props.inspectedBy);
+            setInspectionDate(props.inspectionDate);
+            setNextInspectionDate(props.nextInspectionDate);
+            setOne(true);
+        }
+
         QRCode.toCanvas(
             canvasRef.current,
             // @ts-ignore
@@ -27,6 +51,45 @@ const Certification0 = ({ ...props }: Certification0Type) => {
             (error: any) => error && console.error(error)
         );
     }, [props.link]);
+
+
+    const saveData = async () => {
+        setSuccess(false);
+        setError(false);
+        const response = await fetch("/api/certificat/setCertificat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify({
+                uuid: props.certificateID,
+                selectedCertificat: 0,
+                props: {
+                    stickerNo: stickerNo,
+                    equipmentType: equipmentType,
+                    equipmentNo: equipmentNo,
+                    equipmentSNo: equipmentSNo,
+                    inspectionDate: inspectionDate,
+                    nextInspectionDate: nextInspectionDate,
+                    inspectedBy: inspectedBy,
+                },
+            }),
+
+        });
+        const res: any = await response.json();
+        console.log(res);
+
+        if (res.success) {
+            setSuccess(true);
+            setError(false);
+        } else {
+            setSuccess(false);
+            setError(true);
+        }
+
+    }
 
 
     return (
@@ -91,7 +154,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
                         {props.edit ? (
-                            <Input value={props.stickerNo} />
+                            <Input value={stickerNo} onChange={(event) => setStickerNo(event.target.value)} />
                         ) : (
                             <>
                                 {props.stickerNo ? props.stickerNo : ":......................................................."}
@@ -110,7 +173,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
                         {props.edit ? (
-                            <Input value={props.equipmentType} />
+                            <Input value={equipmentType} onChange={(event) => setEquipmentType(event.target.value)} />
                         ) : (
                             <>
                                 {props.equipmentType ? props.equipmentType : ":......................................................."}
@@ -129,7 +192,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
                         {props.edit ? (
-                            <Input value={props.equipmentNo} />
+                            <Input value={equipmentNo} onChange={(event) => setEquipmentNo(event.target.value)} />
                         ) : (
                             <>
                                 {props.equipmentNo ? props.equipmentNo : ":......................................................."}
@@ -148,7 +211,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
                         {props.edit ? (
-                            <Input value={props.equipmentSNo} />
+                            <Input value={equipmentSNo} onChange={(event) => setEquipmentSNo(event.target.value)} />
                         ) : (
                             <>
                                 {props.equipmentSNo ? props.equipmentSNo : ":......................................................."}
@@ -167,7 +230,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
                         {props.edit ? (
-                            <Input value={props.inspectionDate} />
+                            <Input value={inspectionDate} onChange={(event) => setInspectionDate(event.target.value)} />
                         ) : (
                             <>
                                 {props.inspectionDate ? props.inspectionDate : ":......................................................."}
@@ -186,7 +249,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
                         {props.edit ? (
-                            <Input value={props.nextInspectionDate} />
+                            <Input value={nextInspectionDate} onChange={(event) => setNextInspectionDate(event.target.value)} />
                         ) : (
                             <>
                                 {props.nextInspectionDate ? props.nextInspectionDate : ":......................................................."}
@@ -205,7 +268,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     </Box>
                     <Box width={'50%'} fontWeight={600}>
                         {props.edit ? (
-                            <Input value={props.inspectedBy} />
+                            <Input value={inspectedBy} onChange={(event) => setInspectedBy(event.target.value)} />
                         ) : (
                             <>
                                 {props.inspectedBy ? props.inspectedBy : ":......................................................."}
@@ -213,6 +276,21 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         )}
                     </Box>
                 </Flex>
+                {props.edit && (
+                    <>
+                        {success && (
+                            <Flex justifyContent={"center"}>
+                                <Text color={'green'}>Data has been Saved</Text>
+                            </Flex>
+                        )}
+                        {error && (
+                            <Flex justifyContent={"center"}>
+                                <Text color={'red'}>Error, please contact an Administrator!</Text>
+                            </Flex>
+                        )}
+                        <Button mt={2} bg={'red'} onClick={() => saveData()}>Save</Button>
+                    </>
+                )}
             </Flex>
         </Flex >
     );

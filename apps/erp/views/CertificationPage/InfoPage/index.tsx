@@ -17,7 +17,7 @@ const InfoPage = ({ ...props }: InfoPageType) => {
                 <Text as={'h2'}>Link: {process.env.NEXT_PUBLIC_URL + props.data.sharedLink}</Text>
             </Flex>
             <Flex justifyContent={'center'} my={3}>
-                <Certification0 {...props?.data.certificateInfo} link={props.data.sharedLink} edit />
+                <Certification0 {...props?.data.certificateInfo} certificateID={props.data.certificateID} link={props.data.sharedLink} edit />
             </Flex>
         </Content>
     );

@@ -28,7 +28,7 @@ const generate = async (req: NextApiRequest, res: NextApiResponse) => {
       await set(ref(DB, "/CERTIFICAT/" + uuidNum), {
         certificateID: uuidNum,
         selectedCertificate: selectedCertificat,
-        certificateInfo: selectedCertificatInfo(selectedCertificat),
+        certificateInfo: selectedCertificatInfo(selectedCertificat, undefined),
         sharedLink: "/shared/certification/" + uuidNum,
         selectedUser: selectedUser,
         generated: new Date(),
@@ -44,17 +44,31 @@ const generate = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
-const selectedCertificatInfo = (selectedCertificat: number) => {
+export const selectedCertificatInfo = (
+  selectedCertificat: number,
+  props: any
+) => {
+  console.log(props);
   if (selectedCertificat == 0) {
-    return {
-      stickerNo: "none",
-      equipmentType: "none",
-      equipmentNo: "none",
-      equipmentSNo: "none",
-      inspectionDate: "none",
-      nextInspectionDate: "none",
-      inspectedBy: "none",
-    };
+    return props
+      ? {
+          stickerNo: props.stickerNo,
+          equipmentType: props.equipmentType,
+          equipmentNo: props.equipmentNo,
+          equipmentSNo: props.equipmentSNo,
+          inspectionDate: props.inspectionDate,
+          nextInspectionDate: props.nextInspectionDate,
+          inspectedBy: props.inspectedBy,
+        }
+      : {
+          stickerNo: "none",
+          equipmentType: "none",
+          equipmentNo: "none",
+          equipmentSNo: "none",
+          inspectionDate: "none",
+          nextInspectionDate: "none",
+          inspectedBy: "none",
+        };
   }
   return "to_change";
 };
