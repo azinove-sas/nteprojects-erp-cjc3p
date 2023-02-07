@@ -26,7 +26,9 @@ const setCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
       certificateInfo: selectedCertificatInfo(selectedCertificat, props),
     });
 
+    await res.revalidate("/shared/certification/" + uuid);
     res.status(200).json({
+      revalidated: true,
       success: true,
     });
   } catch (error) {

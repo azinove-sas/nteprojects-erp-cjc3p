@@ -34,6 +34,7 @@ const generate = async (req: NextApiRequest, res: NextApiResponse) => {
         generated: new Date(),
         lastModification: new Date(),
       });
+      await res.revalidate("/shared/certification/" + uuidNum);
     }
 
     res.status(200).json({
