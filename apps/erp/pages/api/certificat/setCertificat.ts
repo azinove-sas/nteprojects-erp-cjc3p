@@ -20,7 +20,6 @@ const setCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     let { uuid, selectedCertificat, props }: any = req.body;
 
-    console.log(uuid);
     const DB = getDatabase(FirebaseApp);
     await update(ref(DB, "/CERTIFICAT/" + uuid), {
       certificateInfo: selectedCertificatInfo(selectedCertificat, props),
@@ -32,7 +31,6 @@ const setCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
       success: true,
     });
   } catch (error) {
-    console.log(error);
     res.status(400).json({ success: false });
   }
 };

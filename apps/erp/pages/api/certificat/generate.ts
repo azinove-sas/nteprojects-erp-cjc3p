@@ -4,7 +4,6 @@ import { ref, set } from "firebase/database";
 import { getDatabase } from "firebase/database";
 import { FirebaseApp } from "azinove/libraries/Firebase";
 import { uuidGenerate } from "azinove/libraries/uuid";
-import { CERTIFICAT } from "@constant/certificateList";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
@@ -34,7 +33,6 @@ const generate = async (req: NextApiRequest, res: NextApiResponse) => {
         generated: new Date(),
         lastModification: new Date(),
       });
-      await res.revalidate("/shared/certification/" + uuidNum);
     }
 
     res.status(200).json({
@@ -49,7 +47,6 @@ export const selectedCertificatInfo = (
   selectedCertificat: number,
   props: any
 ) => {
-  console.log(props);
   if (selectedCertificat == 0) {
     return props
       ? {
