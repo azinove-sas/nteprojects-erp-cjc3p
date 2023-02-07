@@ -26,6 +26,7 @@ const setCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
     });
 
     await res.revalidate("/shared/certification/" + uuid);
+    await res.revalidate("/certification/info/" + uuid);
     res.status(200).json({
       revalidated: true,
       success: true,
