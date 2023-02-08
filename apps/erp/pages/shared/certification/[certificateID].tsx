@@ -46,6 +46,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }: any) => {
 
   const DATA: any = (await get(ref(REALTIME_DB, "CERTIFICAT/" + params.certificateID))).toJSON();
+
+  if (!DATA) {
+    return {
+      notFound: true
+    }
+  }
+
   return {
     props: {
       data: DATA,
