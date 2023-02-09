@@ -19,7 +19,7 @@ const InfoPage = ({ ...props }: InfoPageType) => {
 
     const handleGeneratePdf = async () => {
         setLoadingPrint(true);
-        const data = document.getElementById('pdf');
+        const data: any = document.getElementById('pdf');
         html2canvas(data).then((canvas: any) => {
             const imgWidth = 220;
             const pageHeight = 297;
