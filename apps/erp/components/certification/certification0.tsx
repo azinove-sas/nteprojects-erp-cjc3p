@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import QRCode from "qrcode";
 import { Box, Image, Flex, Button, Text } from "rebass";
 import { Input } from "@rebass/forms";
+import { textAlign } from "html2canvas/dist/types/css/property-descriptors/text-align";
 
 interface Certification0Type {
     equipmentNo?: string,
@@ -12,8 +13,10 @@ interface Certification0Type {
     nextInspectionDate?: string,
     stickerNo?: string;
     edit?: true;
+    print?: true;
     link?: string;
     certificateID?: string;
+    bg?: string;
 }
 
 const Certification0 = ({ ...props }: Certification0Type) => {
@@ -44,12 +47,18 @@ const Certification0 = ({ ...props }: Certification0Type) => {
             setOne(true);
         }
 
+        // if (!props.print) {
         QRCode.toCanvas(
             canvasRef.current,
             // @ts-ignore
             process.env.NEXT_PUBLIC_URL + props.link || process.env.NEXT_PUBLIC_URL + "/",
-            (error: any) => error && console.error(error)
+            {
+                width: 110,
+                margin: 3
+            }
         );
+        // }
+
     }, [props.link]);
 
 
@@ -78,8 +87,8 @@ const Certification0 = ({ ...props }: Certification0Type) => {
             }),
 
         });
+
         const res: any = await response.json();
-        console.log(res);
 
         if (res.success) {
             setSuccess(true);
@@ -88,7 +97,142 @@ const Certification0 = ({ ...props }: Certification0Type) => {
             setSuccess(false);
             setError(true);
         }
+    }
 
+    if (props.print) {
+        return (
+            <Box
+                // bg={props.bg}
+                p={3}
+                sx={{
+                    width: '100mm',
+                    // height: '100mm',
+                    border: '1px solid black',
+                }}>
+                <Flex flexDirection={'row'} py={1} sx={{
+                    "@media (max-width: 960px)": {
+                        flexDirection: 'column',
+                        textAlign: 'center',
+                    }
+                }}>
+                    <Flex width={'35%'} alignItems={'center'}>
+                        <Image src="/static/images/logo/logo-transparent.webp" width={'100%'} height={'20mm'} alt={'logo'} />
+                    </Flex>
+                    <Flex fontSize={'2mm'} width={'40%'} pl={2} fontWeight={700} alignItems={'center'} justifyContent={'center'} >
+                        Al Najm Al Thaqib Contracting Co.<br />
+                        PO BOX NO. 74, JUBAIL-31951, KSA <br />
+                        Tel No: +966 (13) 361 7065 / 7004 / 7005 <br />
+                        Email: info@nteprojects.com <br />
+                    </Flex>
+                    <Flex width={'25%'} alignItems={'center'}>
+                        <Box as={'canvas'} ref={canvasRef} height={'10mm'} />
+                    </Flex>
+                </Flex>
+                <Box as={'hr'} sx={{
+                    display: 'block',
+                    flex: '1 1 100%',
+                    height: '0px',
+                    maxHeight: '0px',
+                    transition: 'inherit',
+                    borderStyle: 'solid',
+                    px: 4,
+                    borderWidth: 'thin 0 0 0',
+                }} />
+                <Flex flexDirection={'column'} py={3}>
+                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                        "@media (max-width: 960px)": {
+                            textAlign: 'center',
+                            flexDirection: 'column',
+                        }
+                    }}>
+                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                            Sticker No.
+                        </Box>
+                        <Box width={'50%'} fontWeight={600}>
+                            {props.stickerNo ? props.stickerNo : ":......................................................."}
+                        </Box>
+                    </Flex>
+                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                        "@media (max-width: 960px)": {
+                            textAlign: 'center',
+                            flexDirection: 'column',
+                        }
+                    }}>
+                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                            Equipment Type
+                        </Box>
+                        <Box width={'50%'} fontWeight={600}>
+                            {props.equipmentType ? props.equipmentType : ":......................................................."}
+                        </Box>
+                    </Flex>
+                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                        "@media (max-width: 960px)": {
+                            textAlign: 'center',
+                            flexDirection: 'column',
+                        }
+                    }}>
+                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                            Equipment No.
+                        </Box>
+                        <Box width={'50%'} fontWeight={600}>
+                            {props.equipmentNo ? props.equipmentNo : ":......................................................."}
+                        </Box>
+                    </Flex>
+                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                        "@media (max-width: 960px)": {
+                            textAlign: 'center',
+                            flexDirection: 'column',
+                        }
+                    }}>
+                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                            Equipment S.No.
+                        </Box>
+                        <Box width={'50%'} fontWeight={600}>
+                            {props.equipmentSNo ? props.equipmentSNo : ":......................................................."}
+                        </Box>
+                    </Flex>
+                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                        "@media (max-width: 960px)": {
+                            textAlign: 'center',
+                            flexDirection: 'column',
+                        }
+                    }}>
+                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                            Inspection Date
+                        </Box>
+                        <Box width={'50%'} fontWeight={600}>
+                            {props.inspectionDate ? props.inspectionDate : ":......................................................."}
+                        </Box>
+                    </Flex>
+                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                        "@media (max-width: 960px)": {
+                            textAlign: 'center',
+                            flexDirection: 'column',
+                        }
+                    }}>
+                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                            Next Inspection Date
+                        </Box>
+                        <Box width={'50%'} fontWeight={600}>
+                            {props.nextInspectionDate ? props.nextInspectionDate : ":......................................................."}
+                        </Box>
+                    </Flex>
+                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                        "@media (max-width: 960px)": {
+                            textAlign: 'center',
+                            flexDirection: 'column',
+                        }
+                    }}>
+                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                            Inspected By
+                        </Box>
+                        <Box width={'50%'} fontWeight={600}>
+                            {props.inspectedBy ? props.inspectedBy : ":......................................................."}
+                        </Box>
+                    </Flex>
+                </Flex>
+            </Box>
+        )
     }
 
 
@@ -123,7 +267,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     Tel No: +966 (13) 361 7065 / 7004 / 7005 <br />
                     Email: info@nteprojects.com <br />
                 </Flex>
-                <Flex width={'25%'} alignItems={'center'} sx={{
+                <Flex width={'25%'} alignItems={'center'} justifyContent={'center'} sx={{
                     "@media (max-width: 960px)": {
                         width: '100%',
                         justifyContent: 'center'
