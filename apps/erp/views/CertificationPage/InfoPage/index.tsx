@@ -103,14 +103,16 @@ const InfoPage = ({ ...props }: InfoPageType) => {
                 maxHeight: '0',
                 overflow: 'auto',
             }}>
-                <Flex ref={reportTemplateRef} id={'pdf'} sx={{
-                    flexFlow: 'row wrap',
-                    width: '220mm',
-                    height: 'auto',
+                {loadingPrint && (
+                    <Flex ref={reportTemplateRef} id={'pdf'} sx={{
+                        flexFlow: 'row wrap',
+                        width: '220mm',
+                        height: 'auto',
 
-                }}>
-                    <Certification0 {...props?.data.certificateInfo} certificateID={props.data.certificateID} link={props.data.sharedLink} print />
-                </Flex>
+                    }}>
+                        <Certification0 {...props?.data.certificateInfo} certificateID={props.data.certificateID} link={props.data.sharedLink} print />
+                    </Flex>
+                )}
             </Box>
         </Content >
 
