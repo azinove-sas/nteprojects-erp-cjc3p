@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import QRCode from "qrcode";
 import { Box, Image, Flex, Button, Text } from "rebass";
 import { Input } from "@rebass/forms";
-import { textAlign } from "html2canvas/dist/types/css/property-descriptors/text-align";
 
 interface Certification0Type {
     equipmentNo?: string,
@@ -60,7 +59,6 @@ const Certification0 = ({ ...props }: Certification0Type) => {
         // }
 
     }, [props.link]);
-
 
     const saveData = async () => {
         setSuccess(false);
