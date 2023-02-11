@@ -20,19 +20,36 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
     let { perPage, page, email, role }: any = req.query;
     const DB = getDatabase(FirebaseApp);
     let data: any = [];
+    let dataUser: any = [];
 
     if (role >= 1) {
       data = (await get(ref(DB, "/CERTIFICAT/"))).toJSON();
     } else {
-      Object.entries(Object((await get(ref(DB, "/CERTIFICAT/"))).toJSON())).map(
-        (item: any) => {
-          if (item[1].selectedUser === email) {
-            data.push(item[1]);
-          }
+      dataUser = (await get(ref(DB, "/CERTIFICAT/"))).toJSON();
+
+      // if no data
+      if (!dataUser) {
+        res.status(200).json({
+          data: [],
+          totalPages: 0,
+          success: true,
+        });
+      }
+      Object.entries(dataUser).map((item: any) => {
+        if (item[1].selectedUser === email) {
+          data.push(item[1]);
         }
-      );
+      });
     }
 
+    // if no data
+    if (!data) {
+      res.status(200).json({
+        data: [],
+        totalPages: 0,
+        success: true,
+      });
+    }
     // ------ Pagination ------
     let count = Object.entries(data).length;
     const end = perPage * page;

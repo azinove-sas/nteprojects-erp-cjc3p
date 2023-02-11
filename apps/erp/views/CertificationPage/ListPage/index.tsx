@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Content from "@views/common/content";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -6,6 +6,7 @@ import useCertificat from "@utils/useCertificat";
 import Table_1 from "azinove/UiKit/table/Table_1";
 import Button_1 from "azinove/UiKit/button/Button_1";
 import { AiFillEye } from "react-icons/ai";
+import { Text } from "rebass";
 
 interface ListPageType { }
 
@@ -46,6 +47,7 @@ const ListPage = ({ ...props }: ListPageType) => {
     []
   );
 
+  console.log(certificate);
   return (
     <Content>
       {isLoading ? (
@@ -53,15 +55,25 @@ const ListPage = ({ ...props }: ListPageType) => {
           <div>loading...</div>
         </>
       ) : (
-        <Table_1
-          data={data}
-          columns={columns}
-          setPage={setPage}
-          setPerPage={setPerPage}
-          currentpage={page}
-          perPage={perPage}
-          totalPage={certificate?.totalPages}
-        />
+        <>
+          {certificate?.totalPages >= 1 ? (
+            <>
+              <Table_1
+                data={data}
+                columns={columns}
+                setPage={setPage}
+                setPerPage={setPerPage}
+                currentpage={page}
+                perPage={perPage}
+                totalPage={certificate?.totalPages}
+              />
+            </>
+          ) : (
+            <>
+              <Text as={'h2'} textAlign={'center'}>NO DATA AVAILABLE</Text>
+            </>
+          )}
+        </>
       )}
     </Content>
   );

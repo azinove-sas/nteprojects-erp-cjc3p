@@ -15,11 +15,14 @@ interface InfoPageType {
 const InfoPage = ({ ...props }: InfoPageType) => {
     let reportTemplateRef: any = useRef();
 
+    const [reload, setReload] = useState<boolean>(false);
     const [loadingPrint, setLoadingPrint] = useState<boolean>(false);
+    const [certificateInfo, setData] = useState<any>(props.data.certificateInfo);
 
     const handleGeneratePdf = async () => {
         setLoadingPrint(true);
         const data: any = document.getElementById('pdf');
+
         html2canvas(data).then((canvas: any) => {
             const imgWidth = 220;
             const pageHeight = 297;
@@ -28,17 +31,16 @@ const InfoPage = ({ ...props }: InfoPageType) => {
             let position = 0;
             heightLeft -= pageHeight;
             const doc = new jsPDF('p', 'mm');
-            doc.addImage(canvas, 'PNG', 0, position, imgWidth, imgHeight, '', 'FAST');
+            doc.addImage(canvas, 'WEBP', 0, position, imgWidth, imgHeight, '', 'FAST');
             while (heightLeft >= 0) {
                 position = heightLeft - imgHeight;
                 doc.addPage();
-                doc.addImage(canvas, 'PNG', 0, position, imgWidth, imgHeight, '', 'FAST');
+                doc.addImage(canvas, 'WEBP', 0, position, imgWidth, imgHeight, '', 'FAST');
                 heightLeft -= pageHeight;
             }
             doc.save(props.data.certificateID);
             setLoadingPrint(false);
         });
-
     };
 
     return (
@@ -97,20 +99,20 @@ const InfoPage = ({ ...props }: InfoPageType) => {
                 </Link>
             </Flex>
             <Flex justifyContent={'center'} my={3}>
-                <Certification0 {...props?.data.certificateInfo} certificateID={props.data.certificateID} link={props.data.sharedLink} edit />
+                <Certification0 {...certificateInfo} certificateID={props.data.certificateID} link={props.data.sharedLink} edit reload={setReload} setData={setData} />
             </Flex>
             <Box sx={{
                 maxHeight: '0',
                 overflow: 'auto',
             }}>
-                {loadingPrint && (
+                {!reload && (
                     <Flex ref={reportTemplateRef} id={'pdf'} sx={{
                         flexFlow: 'row wrap',
                         width: '220mm',
                         height: 'auto',
 
                     }}>
-                        <Certification0 {...props?.data.certificateInfo} certificateID={props.data.certificateID} link={props.data.sharedLink} print />
+                        <Certification0 {...certificateInfo} certificateID={props.data.certificateID} link={props.data.sharedLink} print />
                     </Flex>
                 )}
             </Box>
