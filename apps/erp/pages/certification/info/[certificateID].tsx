@@ -36,16 +36,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const PATH_sitemap = "/CERTIFICAT";
   const PATH_DATA: any = (await get(ref(REALTIME_DB, PATH_sitemap))).toJSON();
 
-  Object.entries(PATH_DATA).map((item, i) => {
-    PATHS.push('/certification/info/' + item[0]);
-  })
+  if (PATH_DATA) {
+    Object.entries(PATH_DATA).map((item, i) => {
+      PATHS.push('/certification/info/' + item[0]);
+    })
+  } else { }
+  return {
+    paths: [""],
+    fallback: "blocking",
+  };
 
-  if (PATHS = []) {
-    return {
-      paths: [""],
-      fallback: "blocking",
-    };
-  }
   // Set PATHS
   return {
     paths: PATHS,
