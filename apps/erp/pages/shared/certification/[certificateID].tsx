@@ -34,11 +34,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     Object.entries(PATH_DATA).map((item, i) => {
       PATHS.push('/shared/certification/' + item[0]);
     })
-  } else {
-    return {
-      paths: [""],
-      fallback: "blocking",
-    };
   }
 
   // Set PATHS
