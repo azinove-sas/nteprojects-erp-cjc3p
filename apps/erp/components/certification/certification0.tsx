@@ -118,13 +118,13 @@ const Certification0 = ({ ...props }: Certification0Type) => {
 
     if (props.print) {
 
-
         return (
             <Box
                 p={3}
                 sx={{
-                    width: '100mm',
-                    border: '1px solid black',
+                    width: '105mm',
+                    height: '105mm',
+                    border: '0.5px solid black',
                 }}>
                 <Flex flexDirection={'row'} py={1} sx={{
                     "@media (max-width: 960px)": {
@@ -152,95 +152,122 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     maxHeight: '0px',
                     transition: 'inherit',
                     borderStyle: 'solid',
-                    px: 4,
+
                     borderWidth: 'thin 0 0 0',
                 }} />
                 <Flex flexDirection={'column'} py={3}>
-                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    <Flex width={'100%'} alignItems={'center'} py={1} sx={{
                         "@media (max-width: 960px)": {
                             textAlign: 'center',
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                            sx={{
+                                borderRight: '1px solid black',
+                            }}>
                             Sticker No.
                         </Box>
                         <Box width={'50%'} fontWeight={600} textAlign={'center'}>
                             {props.stickerNo ? props.stickerNo : ":......................................................."}
                         </Box>
                     </Flex>
-                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    <Flex width={'100%'} alignItems={'center'} py={1} sx={{
+                        borderBlockStart: '1px solid black',
+                        borderBlockEnd: '1px solid black',
                         "@media (max-width: 960px)": {
                             textAlign: 'center',
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                            sx={{
+                                borderRight: '1px solid black',
+                            }}>
                             Equipment Type
                         </Box>
                         <Box width={'50%'} fontWeight={600} textAlign={'center'}>
                             {props.equipmentType ? props.equipmentType : ":......................................................."}
                         </Box>
                     </Flex>
-                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    <Flex width={'100%'} alignItems={'center'} py={1} sx={{
+                        borderBlockEnd: '1px solid black',
                         "@media (max-width: 960px)": {
                             textAlign: 'center',
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                            sx={{
+                                borderRight: '1px solid black',
+                            }}>
                             Equipment No.
                         </Box>
                         <Box width={'50%'} fontWeight={600} textAlign={'center'}>
                             {props.equipmentNo ? props.equipmentNo : ":......................................................."}
                         </Box>
                     </Flex>
-                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    <Flex width={'100%'} alignItems={'center'} py={1} sx={{
+                        borderBlockEnd: '1px solid black',
                         "@media (max-width: 960px)": {
                             textAlign: 'center',
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                            sx={{
+                                borderRight: '1px solid black',
+                            }}>
                             Equipment S.No.
                         </Box>
                         <Box width={'50%'} fontWeight={600} textAlign={'center'}>
                             {props.equipmentSNo ? props.equipmentSNo : ":......................................................."}
                         </Box>
                     </Flex>
-                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    <Flex width={'100%'} alignItems={'center'} py={1} sx={{
+                        borderBlockEnd: '1px solid black',
                         "@media (max-width: 960px)": {
                             textAlign: 'center',
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                            sx={{
+                                borderRight: '1px solid black',
+                            }}>
                             Inspection Date
                         </Box>
                         <Box width={'50%'} fontWeight={600} textAlign={'center'}>
                             {props.inspectionDate ? props.inspectionDate : ":......................................................."}
                         </Box>
                     </Flex>
-                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    <Flex width={'100%'} alignItems={'center'} py={1} sx={{
+                        borderBlockEnd: '1px solid black',
                         "@media (max-width: 960px)": {
                             textAlign: 'center',
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                            sx={{
+                                borderRight: '1px solid black',
+                            }}>
                             Next Inspection Date
                         </Box>
                         <Box width={'50%'} fontWeight={600} textAlign={'center'}>
                             {props.nextInspectionDate ? props.nextInspectionDate : ":......................................................."}
                         </Box>
                     </Flex>
-                    <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    <Flex width={'100%'} alignItems={'center'} py={1} sx={{
                         "@media (max-width: 960px)": {
                             textAlign: 'center',
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
+                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                            sx={{
+                                borderRight: '1px solid black',
+                            }}>
                             Inspected By
                         </Box>
                         <Box width={'50%'} fontWeight={600} textAlign={'center'}>
