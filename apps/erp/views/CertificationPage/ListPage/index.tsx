@@ -6,7 +6,7 @@ import useCertificat from "@utils/useCertificat";
 import Table_1 from "azinove/UiKit/table/Table_1";
 import Button_1 from "azinove/UiKit/button/Button_1";
 import { AiFillEye } from "react-icons/ai";
-import { Text } from "rebass";
+import { Text, Flex } from "rebass";
 
 interface ListPageType { }
 
@@ -22,8 +22,9 @@ const ListPage = ({ ...props }: ListPageType) => {
 
 
   const list = certificate?.data.map((i: any) => {
+    console.log(i)
     return {
-      col1: i.certificateID,
+      col1: <Flex width={'100%'} fontSize={'22px'} justifyContent='center' color={'red'} fontWeight={800}>{i.certificateInfo?.stickerNo}</Flex>,
       col2: i.selectedUser,
       col3: <Button_1 text={<AiFillEye size={22} />} onClick={() => router.push("/certification/info/" + i.certificateID)} />,
     };
@@ -32,7 +33,7 @@ const ListPage = ({ ...props }: ListPageType) => {
   const columns = React.useMemo(
     () => [
       {
-        Header: "Sticker UUID",
+        Header: "Sticker No",
         accessor: "col1", // accessor is the "key" in the data
       },
       {
