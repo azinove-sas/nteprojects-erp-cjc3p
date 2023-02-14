@@ -13,7 +13,6 @@ interface InfoPageType {
 }
 
 const InfoPage = ({ ...props }: InfoPageType) => {
-    let reportTemplateRef: any = useRef();
 
     const [reload, setReload] = useState<boolean>(false);
     const [loadingPrint, setLoadingPrint] = useState<boolean>(false);
@@ -102,17 +101,19 @@ const InfoPage = ({ ...props }: InfoPageType) => {
                 <Certification0 {...certificateInfo} certificateID={props.data.certificateID} link={props.data.sharedLink} edit reload={setReload} setData={setData} />
             </Flex>
             <Box sx={{
-                maxHeight: '0',
+                // maxHeight: '0',
                 overflow: 'auto',
             }}>
                 {!reload && (
-                    <Flex ref={reportTemplateRef} id={'pdf'} sx={{
+                    <Flex id={'pdf'} sx={{
                         flexFlow: 'row wrap',
                         width: '220mm',
                         height: 'auto',
-
                     }}>
-                        <Certification0 {...certificateInfo} certificateID={props.data.certificateID} link={props.data.sharedLink} print />
+                        <Certification0 {...certificateInfo} link={props.data.sharedLink} print />
+                        <Certification0 {...certificateInfo} link={props.data.sharedLink} print />
+                        <Certification0 {...certificateInfo} link={props.data.sharedLink} print />
+                        <Certification0 {...certificateInfo} link={props.data.sharedLink} print />
                     </Flex>
                 )}
             </Box>

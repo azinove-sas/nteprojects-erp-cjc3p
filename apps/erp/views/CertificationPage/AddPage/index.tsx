@@ -8,7 +8,12 @@ import useAdminUserList from "@utils/useAdminUserList";
 import { CERTIFICAT } from "@constant/certificateList";
 import { certificationIndex } from "@components/certification/certificationIndex";
 import Button_17 from "azinove/UiKit/button/Button_17";
-
+import Certification0 from "@components/certification/certification0";
+import html2canvas from "html2canvas";
+import jsPDF from 'jspdf';
+import { AiFillPrinter } from "react-icons/ai"
+import UseAnimations from "react-useanimations";
+import loading2 from 'react-useanimations/lib/loading2';
 
 interface AddPageType { }
 
@@ -23,10 +28,40 @@ const AddPage = ({ ...props }: AddPageType) => {
   const [selectedUserError, setSelectedUserError] = useState<boolean>(false);
 
   const [generationLoading, setGenerationLoading] = useState<boolean>(false);
+  const [backUpData, setBackUpData] = useState();
+  const [readyPrint, setReadyPrint] = useState<boolean>(false);
+  const [loadingPrint, setLoadingPrint] = useState<boolean>(false);
 
   const { data: data, isLoading } = useAdminUserList();
 
+  const handleGeneratePdf = async () => {
+    setLoadingPrint(true);
+    const data: any = document.getElementById('pdf');
+
+    html2canvas(data).then((canvas: any) => {
+      const imgWidth = 220;
+      const pageHeight = 297;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      let heightLeft = imgHeight;
+      let position = 0;
+      heightLeft -= pageHeight;
+      const doc = new jsPDF('p', 'mm');
+      doc.addImage(canvas, 'PNG', 0, position, imgWidth, imgHeight, '', 'FAST');
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        doc.addPage();
+        doc.addImage(canvas, 'PNG', 0, position, imgWidth, imgHeight, '', 'FAST');
+        heightLeft -= pageHeight;
+      }
+      let fileName = selectedUser + "-" + number + ".pdf";
+      doc.save(String(fileName));
+      setLoadingPrint(false);
+    });
+  };
+
   const submitRequest = async () => {
+    // handleGeneratePdf();
+    // return;
 
     if (!selectedUser) {
       setSelectedUserError(true)
@@ -57,9 +92,12 @@ const AddPage = ({ ...props }: AddPageType) => {
       }),
     });
 
+
     const res = await response.json();
     if (res.success) {
+      setBackUpData(res.BackUpData);
       setGenerationLoading(false);
+      setReadyPrint(true);
     } else {
       setGenerationLoading(false);
     }
@@ -71,7 +109,6 @@ const AddPage = ({ ...props }: AddPageType) => {
   }
 
   if (isLoading) return <Text as={"p"}>Loading...</Text>;
-
   return (
     <Content>
       <Box>
@@ -132,7 +169,41 @@ const AddPage = ({ ...props }: AddPageType) => {
 
       <Flex justifyContent={'center'} my={2}>
         {!generationLoading ? (
-          <Button_17 onClick={() => submitRequest()}>Generate</Button_17>
+          <>
+            {readyPrint ? (
+              <Box
+                as={"button"}
+                sx={{
+                  padding: "15px",
+                  width: "25px",
+                  height: "25px",
+                  textAlign: "center",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "column",
+                  boxShadow:
+                    "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px",
+                  border: "none",
+                  cursor: "pointer",
+                  transition: "all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+                  background: "#639",
+                  color: "white",
+                  ":hover": {
+                    background: "#238fce",
+                  },
+                }}
+                onClick={handleGeneratePdf}
+              >
+                {loadingPrint ? (
+                  <UseAnimations animation={loading2} size={22} fillColor={'white'} />
+                ) : (
+                  <AiFillPrinter size={20} />
+                )}
+              </Box>
+            ) : (
+              <Button_17 onClick={() => submitRequest()}>Generate</Button_17>
+            )}
+          </>
         ) : (
           <>
             Loading ...
@@ -151,6 +222,28 @@ const AddPage = ({ ...props }: AddPageType) => {
           <Flex justifyContent={'center'} my={3}>
             {selectedCertificat != -1 && certificationIndex.at(selectedCertificat)?.children}
           </Flex>
+          <Box sx={{ maxHeight: '0', overflow: 'auto', }}>
+            {backUpData && (
+              <Box id={'pdf'} sx={{
+                width: '220mm',
+              }}>
+                {Object.entries(backUpData).map((element: any, i) => {
+                  return (
+                    <Flex key={i} sx={{
+                      flexFlow: 'wrap',
+                      height: '297mm',
+                    }}>
+                      <>
+                        {element[1].map((item: any, j: number) => (
+                          <Certification0 key={'num-' + j} {...item.certificateInfo} link={item.sharedLink} print />
+                        ))}
+                      </>
+                    </Flex>
+                  )
+                })}
+              </Box>
+            )}
+          </Box>
         </>
       )}
     </Content>

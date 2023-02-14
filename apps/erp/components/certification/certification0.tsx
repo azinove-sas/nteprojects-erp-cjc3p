@@ -4,13 +4,13 @@ import { Box, Image, Flex, Button, Text } from "rebass";
 import { Input } from "@rebass/forms";
 
 interface Certification0Type {
-    equipmentNo?: string,
-    equipmentSNo?: string,
-    equipmentType?: string,
-    inspectedBy?: string,
+    stickerNo?: string;
+    clientName?: string,
+    equipmentDetail?: string,
+    equipmentSN?: string,
     inspectionDate?: string,
     nextInspectionDate?: string,
-    stickerNo?: string;
+    inspectedBy?: string,
     edit?: true;
     print?: true;
     link?: string;
@@ -25,9 +25,9 @@ const Certification0 = ({ ...props }: Certification0Type) => {
     const canvasRef = useRef();
 
     const [stickerNo, setStickerNo] = useState<string>();
-    const [equipmentNo, setEquipmentNo] = useState<string>();
-    const [equipmentSNo, setEquipmentSNo] = useState<string>();
-    const [equipmentType, setEquipmentType] = useState<string>();
+    const [clientName, setClientName] = useState<string>();
+    const [equipmentDetail, setEquipmentDetail] = useState<string>();
+    const [equipmentSN, setEquipmentSn] = useState<string>();
     const [inspectedBy, setInspectedBy] = useState<string>();
     const [inspectionDate, setInspectionDate] = useState<string>();
     const [nextInspectionDate, setNextInspectionDate] = useState<string>();
@@ -39,9 +39,9 @@ const Certification0 = ({ ...props }: Certification0Type) => {
     useEffect(() => {
         if (props.edit && !one) {
             setStickerNo(props.stickerNo);
-            setEquipmentNo(props.equipmentNo);
-            setEquipmentSNo(props.equipmentSNo);
-            setEquipmentType(props.equipmentType);
+            setClientName(props.clientName);
+            setEquipmentDetail(props.equipmentDetail);
+            setEquipmentSn(props.equipmentSN);
             setInspectedBy(props.inspectedBy);
             setInspectionDate(props.inspectionDate);
             setNextInspectionDate(props.nextInspectionDate);
@@ -78,9 +78,9 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                 selectedCertificat: 0,
                 props: {
                     stickerNo: stickerNo,
-                    equipmentType: equipmentType,
-                    equipmentNo: equipmentNo,
-                    equipmentSNo: equipmentSNo,
+                    equipmentSN: equipmentSN,
+                    clientName: clientName,
+                    equipmentDetail: equipmentDetail,
                     inspectionDate: inspectionDate,
                     nextInspectionDate: nextInspectionDate,
                     inspectedBy: inspectedBy,
@@ -93,17 +93,17 @@ const Certification0 = ({ ...props }: Certification0Type) => {
         if (res.success) {
             props.setData({
                 stickerNo: stickerNo,
-                equipmentType: equipmentType,
-                equipmentNo: equipmentNo,
-                equipmentSNo: equipmentSNo,
+                equipmentSN: equipmentSN,
+                clientName: clientName,
+                equipmentDetail: equipmentDetail,
                 inspectionDate: inspectionDate,
                 nextInspectionDate: nextInspectionDate,
                 inspectedBy: inspectedBy,
             })
             setStickerNo(stickerNo);
-            setEquipmentNo(equipmentNo);
-            setEquipmentSNo(equipmentSNo);
-            setEquipmentType(equipmentType);
+            setClientName(clientName);
+            setEquipmentDetail(equipmentDetail);
+            setEquipmentSn(equipmentSN);
             setInspectedBy(inspectedBy);
             setInspectionDate(inspectionDate);
             setNextInspectionDate(nextInspectionDate);
@@ -162,14 +162,14 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                        <Box width={'35%'} py={1} fontSize={'13px'} fontWeight={800}
                             sx={{
                                 borderRight: '1px solid black',
                             }}>
-                            Sticker No.
+                            STICKER NO.
                         </Box>
-                        <Box width={'50%'} fontWeight={600} textAlign={'center'}>
-                            {props.stickerNo ? props.stickerNo : ":......................................................."}
+                        <Box width={'65%'} fontSize={'13px'} color={'red'} textAlign={'center'} fontWeight={800}>
+                            {props.stickerNo && props.stickerNo}
                         </Box>
                     </Flex>
                     <Flex width={'100%'} alignItems={'center'} py={1} sx={{
@@ -180,14 +180,11 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                        <Box width={'35%'} py={1} fontSize={'13px'} fontWeight={800}
                             sx={{
                                 borderRight: '1px solid black',
                             }}>
-                            Equipment Type
-                        </Box>
-                        <Box width={'50%'} fontWeight={600} textAlign={'center'}>
-                            {props.equipmentType ? props.equipmentType : ":......................................................."}
+                            CLIENT NAME
                         </Box>
                     </Flex>
                     <Flex width={'100%'} alignItems={'center'} py={1} sx={{
@@ -197,14 +194,11 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                        <Box width={'35%'} py={1} fontSize={'13px'} fontWeight={800}
                             sx={{
                                 borderRight: '1px solid black',
                             }}>
-                            Equipment No.
-                        </Box>
-                        <Box width={'50%'} fontWeight={600} textAlign={'center'}>
-                            {props.equipmentNo ? props.equipmentNo : ":......................................................."}
+                            EQUIP. DETAIL
                         </Box>
                     </Flex>
                     <Flex width={'100%'} alignItems={'center'} py={1} sx={{
@@ -214,14 +208,11 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                        <Box width={'35%'} py={1} fontSize={'13px'} fontWeight={800}
                             sx={{
                                 borderRight: '1px solid black',
                             }}>
-                            Equipment S.No.
-                        </Box>
-                        <Box width={'50%'} fontWeight={600} textAlign={'center'}>
-                            {props.equipmentSNo ? props.equipmentSNo : ":......................................................."}
+                            EQUIPE. SN
                         </Box>
                     </Flex>
                     <Flex width={'100%'} alignItems={'center'} py={1} sx={{
@@ -231,14 +222,11 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                        <Box width={'35%'} py={1} fontSize={'13px'} fontWeight={800}
                             sx={{
                                 borderRight: '1px solid black',
                             }}>
-                            Inspection Date
-                        </Box>
-                        <Box width={'50%'} fontWeight={600} textAlign={'center'}>
-                            {props.inspectionDate ? props.inspectionDate : ":......................................................."}
+                            INSP. DATE
                         </Box>
                     </Flex>
                     <Flex width={'100%'} alignItems={'center'} py={1} sx={{
@@ -248,14 +236,11 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                        <Box width={'35%'} py={1} fontSize={'13px'} fontWeight={800}
                             sx={{
                                 borderRight: '1px solid black',
                             }}>
-                            Next Inspection Date
-                        </Box>
-                        <Box width={'50%'} fontWeight={600} textAlign={'center'}>
-                            {props.nextInspectionDate ? props.nextInspectionDate : ":......................................................."}
+                            NEXT INSP. DATE
                         </Box>
                     </Flex>
                     <Flex width={'100%'} alignItems={'center'} py={1} sx={{
@@ -264,18 +249,15 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                             flexDirection: 'column',
                         }
                     }}>
-                        <Box width={'50%'} fontSize={'17px'} fontWeight={800}
+                        <Box width={'35%'} py={1} fontSize={'13px'} fontWeight={800}
                             sx={{
                                 borderRight: '1px solid black',
                             }}>
-                            Inspected By
-                        </Box>
-                        <Box width={'50%'} fontWeight={600} textAlign={'center'}>
-                            {props.inspectedBy ? props.inspectedBy : ":......................................................."}
+                            INSP. BY
                         </Box>
                     </Flex>
                 </Flex>
-            </Box>
+            </Box >
         )
     }
 
@@ -337,15 +319,30 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         flexDirection: 'column',
                     }
                 }}>
-                    <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
-                        Sticker No.
+                    <Box width={'50%'} py={1} fontSize={'22px'} fontWeight={800}>
+                        STICKER NO.
                     </Box>
-                    <Box width={'50%'} fontWeight={600}>
+                    <Box width={'50%'} fontSize={'13px'} fontWeight={800}>
+                        <>
+                            {props.stickerNo ? props.stickerNo : ":......................................................."}
+                        </>
+                    </Box>
+                </Flex>
+                <Flex width={'100%'} alignItems={'center'} my={2} sx={{
+                    "@media (max-width: 960px)": {
+                        textAlign: 'center',
+                        flexDirection: 'column',
+                    }
+                }}>
+                    <Box width={'50%'} py={1} fontSize={'22px'} fontWeight={800}>
+                        CLIENT NAME
+                    </Box>
+                    <Box width={'50%'} fontSize={'13px'} fontWeight={800}>
                         {props.edit ? (
-                            <Input value={stickerNo} onChange={(event) => setStickerNo(event.target.value)} />
+                            <Input value={equipmentSN} onChange={(event) => setEquipmentSn(event.target.value)} />
                         ) : (
                             <>
-                                {props.stickerNo ? props.stickerNo : ":......................................................."}
+                                {props.equipmentSN ? props.equipmentSN : ":......................................................."}
                             </>
                         )}
                     </Box>
@@ -356,15 +353,15 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         flexDirection: 'column',
                     }
                 }}>
-                    <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
-                        Equipment Type
+                    <Box width={'50%'} py={1} fontSize={'22px'} fontWeight={800}>
+                        EQUIP. DETAIL
                     </Box>
-                    <Box width={'50%'} fontWeight={600}>
+                    <Box width={'50%'} fontSize={'13px'} fontWeight={800}>
                         {props.edit ? (
-                            <Input value={equipmentType} onChange={(event) => setEquipmentType(event.target.value)} />
+                            <Input value={clientName} onChange={(event) => setClientName(event.target.value)} />
                         ) : (
                             <>
-                                {props.equipmentType ? props.equipmentType : ":......................................................."}
+                                {props.clientName ? props.clientName : ":......................................................."}
                             </>
                         )}
                     </Box>
@@ -375,15 +372,15 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         flexDirection: 'column',
                     }
                 }}>
-                    <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
-                        Equipment No.
+                    <Box width={'50%'} py={1} fontSize={'22px'} fontWeight={800}>
+                        EQUIPE. SN
                     </Box>
-                    <Box width={'50%'} fontWeight={600}>
+                    <Box width={'50%'} fontSize={'13px'} fontWeight={800}>
                         {props.edit ? (
-                            <Input value={equipmentNo} onChange={(event) => setEquipmentNo(event.target.value)} />
+                            <Input value={equipmentDetail} onChange={(event) => setEquipmentDetail(event.target.value)} />
                         ) : (
                             <>
-                                {props.equipmentNo ? props.equipmentNo : ":......................................................."}
+                                {props.equipmentDetail ? props.equipmentDetail : ":......................................................."}
                             </>
                         )}
                     </Box>
@@ -394,29 +391,10 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         flexDirection: 'column',
                     }
                 }}>
-                    <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
-                        Equipment S.No.
+                    <Box width={'50%'} py={1} fontSize={'22px'} fontWeight={800}>
+                        INSP. DATE
                     </Box>
-                    <Box width={'50%'} fontWeight={600}>
-                        {props.edit ? (
-                            <Input value={equipmentSNo} onChange={(event) => setEquipmentSNo(event.target.value)} />
-                        ) : (
-                            <>
-                                {props.equipmentSNo ? props.equipmentSNo : ":......................................................."}
-                            </>
-                        )}
-                    </Box>
-                </Flex>
-                <Flex width={'100%'} alignItems={'center'} my={2} sx={{
-                    "@media (max-width: 960px)": {
-                        textAlign: 'center',
-                        flexDirection: 'column',
-                    }
-                }}>
-                    <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
-                        Inspection Date
-                    </Box>
-                    <Box width={'50%'} fontWeight={600}>
+                    <Box width={'50%'} fontSize={'13px'} fontWeight={800}>
                         {props.edit ? (
                             <Input value={inspectionDate} onChange={(event) => setInspectionDate(event.target.value)} />
                         ) : (
@@ -432,10 +410,10 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         flexDirection: 'column',
                     }
                 }}>
-                    <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
-                        Next Inspection Date
+                    <Box width={'50%'} py={1} fontSize={'22px'} fontWeight={800}>
+                        NEXT INSP. DATE
                     </Box>
-                    <Box width={'50%'} fontWeight={600}>
+                    <Box width={'50%'} fontSize={'13px'} fontWeight={800}>
                         {props.edit ? (
                             <Input value={nextInspectionDate} onChange={(event) => setNextInspectionDate(event.target.value)} />
                         ) : (
@@ -451,10 +429,10 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         flexDirection: 'column',
                     }
                 }}>
-                    <Box width={'50%'} fontSize={'22px'} fontWeight={800}>
-                        Inspected By
+                    <Box width={'50%'} py={1} fontSize={'22px'} fontWeight={800}>
+                        INSP. BY
                     </Box>
-                    <Box width={'50%'} fontWeight={600}>
+                    <Box width={'50%'} fontSize={'13px'} fontWeight={800}>
                         {props.edit ? (
                             <Input value={inspectedBy} onChange={(event) => setInspectedBy(event.target.value)} />
                         ) : (
