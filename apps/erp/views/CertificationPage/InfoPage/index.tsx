@@ -101,7 +101,7 @@ const InfoPage = ({ ...props }: InfoPageType) => {
                 <Certification0 {...certificateInfo} certificateID={props.data.certificateID} link={props.data.sharedLink} edit reload={setReload} setData={setData} />
             </Flex>
             <Box sx={{
-                // maxHeight: '0',
+                maxHeight: '0',
                 overflow: 'auto',
             }}>
                 {!reload && (
@@ -110,9 +110,6 @@ const InfoPage = ({ ...props }: InfoPageType) => {
                         width: '220mm',
                         height: 'auto',
                     }}>
-                        <Certification0 {...certificateInfo} link={props.data.sharedLink} print />
-                        <Certification0 {...certificateInfo} link={props.data.sharedLink} print />
-                        <Certification0 {...certificateInfo} link={props.data.sharedLink} print />
                         <Certification0 {...certificateInfo} link={props.data.sharedLink} print />
                     </Flex>
                 )}
