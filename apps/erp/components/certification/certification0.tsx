@@ -35,6 +35,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
     const [success, setSuccess] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
     const [one, setOne] = useState<boolean>(false);
+    console.log(props);
 
     useEffect(() => {
         if (props.edit && !one) {
