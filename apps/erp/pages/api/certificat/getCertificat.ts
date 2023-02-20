@@ -29,7 +29,7 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
       data = Object.entries(data).sort((a: any, b: any) => {
         console.log(a.certificateInfo);
         if (a[1].certificateInfo && b[1].certificateInfo) {
-          if (a[1].certificateInfo.stickerNo < b[1].certificateInfo.stickerNo) {
+          if (a[1].certificateInfo.stickerNo > b[1].certificateInfo.stickerNo) {
             return -1;
           }
         }
@@ -40,7 +40,7 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
       // @ts-ignore
       dataUser = Object.entries(dataUser).sort((a: any, b: any) => {
         if (a.certificateInfo && b.certificateInfo) {
-          if (a.certificateInfo.stickerNo < b.certificateInfo.stickerNo) {
+          if (a.certificateInfo.stickerNo > b.certificateInfo.stickerNo) {
             return -1;
           }
         }
