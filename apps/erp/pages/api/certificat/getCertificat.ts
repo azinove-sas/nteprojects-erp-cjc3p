@@ -68,6 +68,14 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
     }
     // ------ END ------
 
+    resData = resData.sort((a: any, b: any) => {
+      if (a.certificateInfo && b.certificateInfo) {
+        if (a.certificateInfo.stickerNo < b.certificateInfo.stickerNo) {
+          return -1;
+        }
+      }
+    });
+
     res.status(200).json({
       data: resData,
       totalPages: totalPages,
