@@ -9,8 +9,15 @@ import IndexPage from "@views/IndexPage";
 
 import config from "@config/seo_meta.json";
 
-const Page: NextPageWithLayout = () => {
-  return <IndexPage />;
+import { useSession } from "next-auth/react";
+
+const Page: NextPageWithLayout = ({ data }: any) => {
+  const { data: session } = useSession();
+
+  if (!session) {
+    return <></>;
+  }
+  return <IndexPage session={session} />;
 };
 
 Page.getLayout = function getLayout(page: ReactElement) {

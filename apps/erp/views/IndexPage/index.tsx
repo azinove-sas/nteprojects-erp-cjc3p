@@ -1,21 +1,20 @@
 import React from "react";
-import { useSession } from "next-auth/react";
-import { Box } from "rebass";
 import Content from "@views/common/content";
 
-interface IndexPageType {}
+interface IndexPageType {
+  session: any
+}
 
 const IndexPage = ({ ...props }: IndexPageType) => {
-  const { data: session } = useSession();
 
   return (
     <Content>
-      {session && (
+      {props.session && (
         <>
           Signed in as{" "}
           {
             // @ts-ignore
-            session.user.email
+            props.session.user.email
           }{" "}
           <br />
         </>

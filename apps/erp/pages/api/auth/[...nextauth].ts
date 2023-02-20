@@ -1,10 +1,29 @@
 // @ts-nocheck
 import NextAuth from "next-auth";
 import Auth0Provider from "next-auth/providers/auth0";
-import { ref, get, set, update } from "firebase/database";
+import { ref, get, set, update, push } from "firebase/database";
 import { getDatabase } from "firebase/database";
 import FirebaseApp from "azinove/libraries/Firebase";
+import getDate from "azinove/utils/getDate";
 import { ROLE } from "@constant/rolesList";
+const permissions = {
+  dashboard: {
+    perms: {
+      access: true,
+    },
+  },
+  crm: {
+    "(id)": {
+      perms: {
+        access: false,
+      },
+    },
+    perms: {
+      access: false,
+      add: false,
+    },
+  },
+};
 
 export default NextAuth({
   session: {
@@ -24,6 +43,7 @@ export default NextAuth({
       const DB = getDatabase(FirebaseApp);
 
       const res: any = (await get(ref(DB, "/USERS/" + user.id))).toJSON();
+      const newDate = new Date().toJSON();
 
       // If not exist in the REALTIME Database
       if (res === null) {
@@ -33,16 +53,25 @@ export default NextAuth({
           email: user.email,
           image: user.image,
           role: ROLE.default,
+          permissions: permissions,
           lastLogin: new Date(),
         });
+        push(ref(DB, "/LOGS/" + getDate()), {
+          message: "[LOG] " + newDate + ": " + user.name + " connected",
+        });
         user.id = user.id;
+        user.permissions = permissions;
         user.role = ROLE.default;
       } else {
-        update(ref(DB, "/USERS/" + user.id), {
-          lastLogin: new Date(),
+        update(ref(DB, "/USERS/" + res.id), {
+          lastLogin: newDate,
+        });
+        push(ref(DB, "/LOGS/" + getDate()), {
+          message: "[LOG] " + newDate + ": " + res.name + " connected",
         });
 
         user.id = res.id;
+        user.permissions = res.permissions;
         user.role = res.role;
       }
       return true;
@@ -58,8 +87,10 @@ export default NextAuth({
           email: user.email,
           image: user.image,
           role: user.role,
+          permissions: user.permissions,
         };
       }
+
       return token;
     },
     // If we want to access our extra user info from sessions we have to pass it the token here to get them in sync:

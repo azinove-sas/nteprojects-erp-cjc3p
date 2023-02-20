@@ -5,6 +5,8 @@ import Certification0 from "@components/certification/certification0";
 import html2canvas from "html2canvas";
 import jsPDF from 'jspdf';
 import { AiFillPrinter } from "react-icons/ai"
+import { BsCheckLg } from "react-icons/bs"
+import { MdCancelPresentation } from "react-icons/md"
 import UseAnimations from "react-useanimations";
 import loading2 from 'react-useanimations/lib/loading2';
 
@@ -16,7 +18,9 @@ const InfoPage = ({ ...props }: InfoPageType) => {
 
     const [reload, setReload] = useState<boolean>(false);
     const [loadingPrint, setLoadingPrint] = useState<boolean>(false);
+    const [loadingApproval, setLoadingApproval] = useState<boolean>(false);
     const [certificateInfo, setData] = useState<any>(props.data.certificateInfo);
+    const [certificateStatus, setCertificateStatus] = useState<boolean>(props?.data.certificateStatus ? props?.data.certificateStatus : false);
 
     const handleGeneratePdf = async () => {
         setLoadingPrint(true);
@@ -42,6 +46,33 @@ const InfoPage = ({ ...props }: InfoPageType) => {
         });
     };
 
+    const approveCertificate = async (status: boolean) => {
+
+        setLoadingApproval(true);
+        const response = await fetch("/api/certificat/setApproval", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            redirect: "follow",
+            referrerPolicy: "no-referrer",
+            body: JSON.stringify({
+                uuid: props.data.certificateID,
+                status: status
+            }),
+        });
+
+        const res: any = await response.json();
+
+        if (res.success) {
+            setCertificateStatus(status);
+            setLoadingApproval(false);
+        } else {
+            setCertificateStatus(false);
+            setLoadingApproval(false);
+        }
+    }
+
     return (
         <Content>
             <Flex textAlign={'center'} flexDirection={'column'} my={3}>
@@ -65,7 +96,68 @@ const InfoPage = ({ ...props }: InfoPageType) => {
                     alignItems: "end",
                 }}
             >
-                <Link>
+                <Flex sx={{ gap: "10px" }}>
+                    {certificateStatus ? (
+                        <Box
+                            as={"button"}
+                            sx={{
+                                width: "30px",
+                                height: "30px",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                display: 'flex',
+                                boxShadow:
+                                    "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px",
+                                border: "none",
+                                cursor: "pointer",
+                                transition: "all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+                                background: "red",
+                                color: "white",
+                                ":hover": {
+                                    background: !loadingApproval ? "white" : '',
+                                    color: !loadingApproval ? "red" : ''
+                                },
+                            }}
+                            disabled={loadingApproval ? true : false}
+                            onClick={() => approveCertificate(false)}
+                        >
+                            {loadingApproval ? (
+                                <UseAnimations animation={loading2} size={22} fillColor={'white'} />
+                            ) : (
+                                <MdCancelPresentation size={20} />
+                            )}
+                        </Box>
+                    ) : (
+                        <Box
+                            as={"button"}
+                            sx={{
+                                width: "30px",
+                                height: "30px",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                display: 'flex',
+                                boxShadow:
+                                    "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px",
+                                border: "none",
+                                cursor: "pointer",
+                                transition: "all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+                                background: "green",
+                                color: "white",
+                                ":hover": {
+                                    background: !loadingApproval ? "white" : '',
+                                    color: !loadingApproval ? "green" : '',
+                                },
+                            }}
+                            disabled={loadingApproval ? true : false}
+                            onClick={() => approveCertificate(true)}
+                        >
+                            {loadingApproval ? (
+                                <UseAnimations animation={loading2} size={22} fillColor={'white'} />
+                            ) : (
+                                <BsCheckLg size={17} />
+                            )}
+                        </Box>
+                    )}
                     <Box
                         as={"button"}
                         sx={{
@@ -95,10 +187,10 @@ const InfoPage = ({ ...props }: InfoPageType) => {
                             <AiFillPrinter size={20} />
                         )}
                     </Box>
-                </Link>
+                </Flex>
             </Flex>
             <Flex justifyContent={'center'} my={3}>
-                <Certification0 {...certificateInfo} certificateID={props.data.certificateID} link={props.data.sharedLink} edit reload={setReload} setData={setData} />
+                <Certification0 {...certificateInfo} certificateStatus={certificateStatus} certificateID={props.data.certificateID} link={props.data.sharedLink} edit reload={setReload} setData={setData} />
             </Flex>
             <Box sx={{
                 maxHeight: '0',
@@ -110,7 +202,7 @@ const InfoPage = ({ ...props }: InfoPageType) => {
                         width: '220mm',
                         height: 'auto',
                     }}>
-                        <Certification0 {...certificateInfo} link={props.data.sharedLink} print />
+                        <Certification0 {...certificateInfo} certificateStatus={certificateStatus} link={props.data.sharedLink} print />
                     </Flex>
                 )}
             </Box>

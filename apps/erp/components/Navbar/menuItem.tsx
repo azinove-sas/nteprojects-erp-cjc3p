@@ -25,23 +25,27 @@ export const menuItem = [
     title: "Services",
     icon: <VscServer />,
     role: ROLE.default,
+    permissionName: "dashboard",
     url: "/services",
     submenu: [
       {
         title: "Certification Generation",
         icon: <MdQrCode2 />,
         role: ROLE.default,
+        permissionName: "certification",
         url: "/certification",
         submenu: [
           {
             title: "List",
             icon: <AiOutlineOrderedList />,
             role: ROLE.default,
+            permissionName: "list",
             url: "/certification/list",
           },
           {
             title: "Add",
             icon: <AiFillFileAdd />,
+            permissionName: "add",
             role: ROLE.admin,
             url: "/certification/add",
           },
@@ -50,6 +54,7 @@ export const menuItem = [
       {
         title: "Business Analytics",
         icon: <MdOutlineAnalytics />,
+        permissionName: "bi",
         role: ROLE.default,
         url: "web-design",
       },
@@ -58,6 +63,7 @@ export const menuItem = [
   {
     title: "Warehouse",
     icon: <FaWarehouse />,
+    permissionName: "warehouse",
     role: ROLE.default,
     url: "/warehouse",
   },
@@ -65,6 +71,7 @@ export const menuItem = [
     title: "CRM",
     icon: <SiCivicrm />,
     role: ROLE.default,
+    permissionName: "crm",
     url: "/crm",
     submenu: [
       {

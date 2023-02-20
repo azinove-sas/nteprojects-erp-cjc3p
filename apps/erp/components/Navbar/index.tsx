@@ -35,19 +35,20 @@ const Navbar = () => {
             backdropFilter: "blur(6px)",
             boxShadow: `0 3px 3px -2px rgba(51,48,60, 0.03),0 3px 4px 0 rgba(51,48,60, 0.02),0 1px 8px 0 rgba(51,48,60, 0.01)`,
             zIndex: 1001,
+
           }}
         >
           <Box
             sx={{
               zIndex: "11",
               blockSize: "64px",
+              inlineSize: "100%",
+              marginInline: "auto",
+              maxInlineSize: "1440px",
             }}
           >
             <Flex
               sx={{
-                inlineSize: "100%",
-                marginInline: "auto",
-                maxInlineSize: "1440px",
                 alignItems: "center",
                 blockSize: "100%",
                 paddingInline: "1.5rem",
@@ -122,6 +123,9 @@ const Navbar = () => {
             sx={{
               paddingBlock: ".6875rem",
               zIndex: "11",
+              inlineSize: "100%",
+              marginInline: "auto",
+              maxInlineSize: "1440px",
             }}
           >
             <Box
@@ -159,7 +163,7 @@ const Navbar = () => {
                 zIndex: 2000,
                 position: "absolute",
                 borderRadius: "inherit",
-                left: 0,
+                left: "calc(0px - 10vw)",
                 pointerEvents: "none",
                 top: 0,
                 bottom: 0,
