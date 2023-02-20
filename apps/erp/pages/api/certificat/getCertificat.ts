@@ -31,7 +31,7 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
         if (a[1].certificateInfo && b[1].certificateInfo) {
           if (a[1].certificateInfo.stickerNo > b[1].certificateInfo.stickerNo) {
             return -1;
-          }
+          } else return 1;
         }
       });
     } else {
@@ -42,7 +42,7 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
         if (a.certificateInfo && b.certificateInfo) {
           if (a.certificateInfo.stickerNo > b.certificateInfo.stickerNo) {
             return -1;
-          }
+          } else return 1;
         }
       });
 
