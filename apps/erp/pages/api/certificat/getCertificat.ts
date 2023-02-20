@@ -26,14 +26,9 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
       data = (await get(ref(DB, "/CERTIFICAT/"))).toJSON();
 
       // @ts-ignore
-      data = Object.entries(data).sort((a: any, b: any) => {
-        console.log(a.certificateInfo);
-        if (a[1].certificateInfo && b[1].certificateInfo) {
-          if (a[1].certificateInfo.stickerNo > b[1].certificateInfo.stickerNo) {
-            return -1;
-          } else return 1;
-        }
-      });
+      data = Object.entries(data).sort((a: any, b: any) =>
+        a[1].certificateInfo.stickerNo > b[1].certificateInfo.stickerNo ? 1 : -1
+      );
     } else {
       dataUser = (await get(ref(DB, "/CERTIFICAT/"))).toJSON();
 
