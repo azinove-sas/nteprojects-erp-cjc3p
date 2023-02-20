@@ -25,9 +25,10 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
     if (role >= 1) {
       data = (await get(ref(DB, "/CERTIFICAT/"))).toJSON();
 
-      data = data.sort((a: any, b: any) => {
+      // @ts-ignore
+      data = Object.entries(data).sort((a: any, b: any) => {
         if (a.certificateInfo && b.certificateInfo) {
-          if (a.certificateInfo.stickerNo < b.certificateInfo.stickerNo) {
+          if (a[1].certificateInfo.stickerNo < b[1].certificateInfo.stickerNo) {
             return -1;
           }
         }
@@ -35,7 +36,8 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
     } else {
       dataUser = (await get(ref(DB, "/CERTIFICAT/"))).toJSON();
 
-      dataUser = dataUser.sort((a: any, b: any) => {
+      // @ts-ignore
+      dataUser = Object.entries(dataUser).sort((a: any, b: any) => {
         if (a.certificateInfo && b.certificateInfo) {
           if (a.certificateInfo.stickerNo < b.certificateInfo.stickerNo) {
             return -1;
@@ -51,7 +53,7 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
           success: true,
         });
       }
-      Object.entries(dataUser).map((item: any) => {
+      dataUser.map((item: any) => {
         if (item[1].selectedUser === email) {
           data.push(item[1]);
         }
@@ -67,18 +69,18 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
       });
     }
     // ------ Pagination ------
-    let count = Object.entries(data).length;
+    let count = data.length;
     const end = perPage * page;
     const start = end - perPage;
     let totalPages = Math.ceil(count / perPage);
 
     let resData: any = [];
     for (let i = start; i <= end - 1; i += 1) {
-      if (!Object.entries(data).at(i)?.[1]) {
+      if (!data.at(i)?.[1]) {
         break;
       }
       if (i < count) {
-        const objectRes: any = Object.entries(data).at(i)?.[1];
+        const objectRes: any = data.at(i)?.[1];
         resData.push(objectRes);
       }
     }
