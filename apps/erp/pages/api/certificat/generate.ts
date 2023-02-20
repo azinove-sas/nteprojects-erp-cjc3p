@@ -49,9 +49,9 @@ const generate = async (req: NextApiRequest, res: NextApiResponse) => {
   let BackUpData = [];
 
   if (selectedCertificat == 0) {
-    tmp = (await get(ref(DB, "/CERTIFICAT/NUMBER/0"))).toJSON();
+    tmp = (await get(ref(DB, "/CERTIFICAT_NUMBER/0"))).toJSON();
     if (tmp == null) {
-      await set(ref(DB, "/CERTIFICAT/NUMBER/"), {
+      await set(ref(DB, "/CERTIFICAT_NUMBER/"), {
         0: "00000",
       });
       TMP_num = "00000";
@@ -101,7 +101,7 @@ const generate = async (req: NextApiRequest, res: NextApiResponse) => {
   if (selectedCertificat == 0) {
     // console.log(TMP_num);
     BackUpData.push(tmp_BackUpData);
-    await set(ref(DB, "/CERTIFICAT/NUMBER/"), {
+    await set(ref(DB, "/CERTIFICAT_NUMBER/"), {
       0: TMP_num,
     });
   }
