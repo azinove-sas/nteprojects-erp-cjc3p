@@ -27,11 +27,11 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
 
       // @ts-ignore
       data = Object.entries(data).sort((a: any, b: any) => {
-        console.log(a[0].certificateInfo);
+        console.log(a.certificateInfo);
         if (a[1].certificateInfo && b[1].certificateInfo) {
-          return a[1].certificateInfo.stickerNo > b[1].certificateInfo.stickerNo
-            ? 1
-            : -1;
+          if (a[1].certificateInfo.stickerNo < b[1].certificateInfo.stickerNo) {
+            return -1;
+          }
         }
       });
     } else {
@@ -40,9 +40,9 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
       // @ts-ignore
       dataUser = Object.entries(dataUser).sort((a: any, b: any) => {
         if (a.certificateInfo && b.certificateInfo) {
-          return a[1].certificateInfo.stickerNo > b[1].certificateInfo.stickerNo
-            ? 1
-            : -1;
+          if (a.certificateInfo.stickerNo < b.certificateInfo.stickerNo) {
+            return -1;
+          }
         }
       });
 
