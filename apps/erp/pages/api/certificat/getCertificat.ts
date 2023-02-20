@@ -24,8 +24,24 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (role >= 1) {
       data = (await get(ref(DB, "/CERTIFICAT/"))).toJSON();
+
+      data = data.sort((a: any, b: any) => {
+        if (a.certificateInfo && b.certificateInfo) {
+          if (a.certificateInfo.stickerNo < b.certificateInfo.stickerNo) {
+            return -1;
+          }
+        }
+      });
     } else {
       dataUser = (await get(ref(DB, "/CERTIFICAT/"))).toJSON();
+
+      dataUser = dataUser.sort((a: any, b: any) => {
+        if (a.certificateInfo && b.certificateInfo) {
+          if (a.certificateInfo.stickerNo < b.certificateInfo.stickerNo) {
+            return -1;
+          }
+        }
+      });
 
       // if no data
       if (!dataUser) {
@@ -67,14 +83,6 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     }
     // ------ END ------
-
-    resData = resData.sort((a: any, b: any) => {
-      if (a.certificateInfo && b.certificateInfo) {
-        if (a.certificateInfo.stickerNo < b.certificateInfo.stickerNo) {
-          return -1;
-        }
-      }
-    });
 
     res.status(200).json({
       data: resData,
