@@ -26,7 +26,12 @@ const ListPage = ({ ...props }: ListPageType) => {
     return {
       col1: <Flex width={'100%'} fontSize={'22px'} justifyContent='center' color={'red'} fontWeight={800}>{i.certificateInfo?.stickerNo}</Flex>,
       col2: i.selectedUser,
-      col3: <Button_1 text={<AiFillEye size={22} />} onClick={() => router.push("/certification/info/" + i.certificateID)} />,
+      col3: i?.certificateStatus ? (
+        <Text as={'h2'} color={'green'}>APPROVED</Text>
+      ) : (
+        <Text as={'h2'} color={'red'}>NOT APPROVED</Text>
+      ),
+      col4: <Button_1 text={<AiFillEye size={22} />} onClick={() => router.push("/certification/info/" + i.certificateID)} />,
     };
   });
   const data = React.useMemo(() => list, [certificate]);
@@ -41,8 +46,12 @@ const ListPage = ({ ...props }: ListPageType) => {
         accessor: "col2",
       },
       {
-        Header: "More Information",
+        Header: "Approved",
         accessor: "col3",
+      },
+      {
+        Header: "More Information",
+        accessor: "col4",
       },
     ],
     []

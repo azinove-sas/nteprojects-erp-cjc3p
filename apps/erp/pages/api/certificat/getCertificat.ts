@@ -27,8 +27,9 @@ const getCertificat = async (req: NextApiRequest, res: NextApiResponse) => {
 
       // @ts-ignore
       data = Object.entries(data).sort((a: any, b: any) => {
-        if (a.certificateInfo && b.certificateInfo) {
-          if (a[1].certificateInfo.stickerNo < b[1].certificateInfo.stickerNo) {
+        console.log(a.certificateInfo);
+        if (a[1].certificateInfo && b[1].certificateInfo) {
+          if (a[1].certificateInfo.stickerNo > b[1].certificateInfo.stickerNo) {
             return -1;
           }
         }

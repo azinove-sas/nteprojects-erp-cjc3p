@@ -20,6 +20,7 @@ interface Certification0Type {
     bg?: string;
     reload?: any;
     setData?: any;
+    add?: true;
     certificateStatus?: boolean;
 }
 
@@ -267,7 +268,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
     }
 
 
-    if (!props.certificateStatus && !props.edit) {
+    if (!props.certificateStatus && !props.edit && !props.add) {
         return (
             <Flex
                 my={1}
@@ -306,29 +307,31 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     mx: 2, bg: '#50C878', display: 'flex', alignItems: 'center',
                 }} onClick={() => setSelectedTab(1)}><AiFillSafetyCertificate size={20} style={{ marginRight: "5px" }} />Certificate</Button>
             </Flex>
-            <Flex
-                my={1}
-                p={2}
-                sx={{
-                    position: "relative",
-                    flexDirection: "column",
-                    minWidth: 0,
-                    wordWrap: "break-word",
-                    backgroundColor: "#fff",
-                    backgroundClip: "border-box",
-                    borderRadius: "10px",
-                    boxShadow:
-                        "0 4px 20px 1px rgb(0 0 0 / 6%), 0 1px 4px rgb(0 0 0 / 8%)",
-                    border: "0",
-                    alignItems: "end",
-                }}
-            >
-                {props?.certificateStatus ? (
-                    <Text as={'h2'} color={'green'}>APPROVED</Text>
-                ) : (
-                    <Text as={'h2'} color={'red'}>NOT APPROVED</Text>
-                )}
-            </Flex>
+            {!props.add && (
+                <Flex
+                    my={1}
+                    p={2}
+                    sx={{
+                        position: "relative",
+                        flexDirection: "column",
+                        minWidth: 0,
+                        wordWrap: "break-word",
+                        backgroundColor: "#fff",
+                        backgroundClip: "border-box",
+                        borderRadius: "10px",
+                        boxShadow:
+                            "0 4px 20px 1px rgb(0 0 0 / 6%), 0 1px 4px rgb(0 0 0 / 8%)",
+                        border: "0",
+                        alignItems: "end",
+                    }}
+                >
+                    {props?.certificateStatus ? (
+                        <Text as={'h2'} color={'green'}>APPROVED</Text>
+                    ) : (
+                        <Text as={'h2'} color={'red'}>NOT APPROVED</Text>
+                    )}
+                </Flex>
+            )}
             {selectedTab === 0 && (
                 <Flex flexDirection={'column'} width={'55%'} backgroundColor={'white'} p={3} sx={{
                     boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
