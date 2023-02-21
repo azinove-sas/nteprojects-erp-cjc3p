@@ -531,11 +531,137 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                 </Flex>
             )}
             {selectedTab === 1 && (
-                <Flex bg={'red'} width={'292mm'} height={'220mm'}>
-                    coucou
+                <Flex bg={'white'} sx={{ border: '0.5px solid black', }} flexDirection={'column'} width={'292mm'} height={'220mm'} p={3}>
+                    <Flex flexDirection={'row'} py={2}>
+                        <Flex width={'15%'}>
+                            <Image src="/static/images/LEEA.jpeg" height={'100px'} alt={'logo'} />
+                        </Flex>
+                        <Flex width={'70%'} textAlign={'center'} flexDirection={'column'}>
+                            <Text as={'h1'} fontSize={'26px'} px={6}>AL-NAJM AL-THAQIB CONTRACTING CO. Certificate of Thorough Examination</Text>
+                            <Text as={'h2'} fontSize={'14px'}>This Certificate Meets the Lifting Equipment Engineers Association Technical Requirements</Text>
+                        </Flex>
+                        <Flex width={'15%'}>
+                            <Image src="/static/images/logo/logo-transparent.webp" width={'100%'} height={'100px'} alt={'logo'} />
+                        </Flex>
+                    </Flex>
+                    <Flex flexDirection={'row'} alignItems={'end'}>
+                        <Flex width={'25%'} justifyContent={'start'}>
+                            <Text as={'h1'} fontSize={'12px'} px={1}>Report No: CRT.NO.ID-0021593.23</Text>
+                        </Flex>
+                        <Flex width={'25%'} justifyContent={'center'}>
+                            <Text as={'h1'} fontSize={'12px'} px={1}>Customer No: ________</Text>
+                        </Flex>
+                        <Flex width={'25%'} justifyContent={'center'}>
+                            <Text as={'h1'} fontSize={'12px'} px={1}>Date of Report: 01 Feb 2023</Text>
+                        </Flex>
+                        <Flex width={'25%'} justifyContent={'center'}>
+                            <Text as={'h1'} fontSize={'12px'} px={1}>Colour Code (If required): N/A</Text>
+                        </Flex>
+                    </Flex>
+                    <Flex sx={{ border: '1px solid black', }} flexDirection={'row'} mt={2}>
+                        <Box width={'50%'} p={1} sx={{ borderRight: 'solid' }}>
+                            <Text fontSize={'12px'} px={1}>Name & Address of the employer for whom the examination was made:</Text>
+                            <Text fontSize={'14px'} px={1}>Name: Abdulla Nass & Partners Co.</Text>
+                            <br />
+                            <Text fontSize={'14px'} px={1}>Address: Dammam Saudi Arabla</Text>
+                        </Box>
+                        <Box width={'35%'} p={1} sx={{ borderRight: 'solid' }}>
+                            <Text fontSize={'13px'} px={1}>Name & Address of the premises at which the examination was made on board:</Text>
+                            <Text fontSize={'14px'} px={1}>SITE - 504:</Text>
+                            <Text fontSize={'14px'} px={1}>Location: UQAIR</Text>
+                        </Box>
+                        <Box width={'15%'} p={1}>
+                            test
+                        </Box>
+                    </Flex>
+                    <Flex sx={{ borderRight: '1px solid black', borderLeft: '1px solid black', borderBlockEnd: 'solid' }} flexDirection={'row'}>
+                        <Box width={'50%'} p={1} sx={{ borderRight: 'solid' }} fontWeight={700}>
+                            Inspected Item Type: FORKLIFT
+                        </Box>
+                        <Box width={'50%'} p={1} fontWeight={700}>
+                            Followed Standard: ANSI B56.1
+                        </Box>
+                    </Flex>
+                    <Flex sx={{ borderRight: '1px solid black', borderLeft: '1px solid black', borderBlockEnd: 'solid' }} flexDirection={'row'}>
+                        <Flex width={'12%'} p={2} py={3} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} bg={'grey'} alignItems={'center'}>
+                            Indetification Number
+                        </Flex>
+                        <Flex width={'4%'} p={2} py={3} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} bg={'grey'} alignItems={'center'} justifyContent={'center'}>
+                            QTY
+                        </Flex>
+                        <Flex width={'20%'} p={2} py={3} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} bg={'grey'} alignItems={'center'} justifyContent={'center'}>
+                            Description
+                        </Flex>
+                        <Flex width={'5%'} p={2} py={3} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} bg={'grey'} alignItems={'center'} textAlign={'center'}>
+                            WLL or SWL
+                        </Flex>
+                        <Flex width={'9%'} p={2} py={3} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} bg={'grey'} alignItems={'center'} textAlign={'center'}>
+                            Date of Last Thorough Examination
+                        </Flex>
+                        <Flex width={'9%'} p={2} py={3} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} bg={'grey'} alignItems={'center'} textAlign={'center'}>
+                            Date of this Thorough Examination
+                        </Flex>
+                        <Flex width={'9%'} p={2} py={3} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} bg={'grey'} alignItems={'center'} textAlign={'center'}>
+                            Latest date of the next Thorough Examination
+                        </Flex>
+                        <Flex width={'10%'} p={2} py={3} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} bg={'grey'} alignItems={'center'} textAlign={'center'}>
+                            Reason for examination (See Below)
+                        </Flex>
+                        <Flex width={'8%'} p={2} py={3} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} bg={'grey'} alignItems={'center'} textAlign={'center'}>
+                            Detaill of any test
+                        </Flex>
+                        <Flex width={'8%'} p={2} py={3} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} bg={'grey'} alignItems={'center'} textAlign={'center'}>
+                            Status (See Above)
+                        </Flex>
+                        <Flex width={'6%'} p={2} py={3} fontWeight={700} fontSize={13} bg={'grey'} alignItems={'center'} textAlign={'center'}>
+                            Safe to Use Yes or No
+                        </Flex>
+                    </Flex>
+                    <Flex sx={{ borderRight: '1px solid black', borderLeft: '1px solid black', borderBlockEnd: 'solid' }} flexDirection={'row'} height={'75mm'}>
+                        <Flex width={'12%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'}>
+                            Indetification Number
+                        </Flex>
+                        <Flex width={'4%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} justifyContent={'center'}>
+                            QTY
+                        </Flex>
+                        <Flex width={'20%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} justifyContent={'center'}>
+                            Description
+                        </Flex>
+                        <Flex width={'5%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
+                            WLL or SWL
+                        </Flex>
+                        <Flex width={'9%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
+                            Date of Last Thorough Examination
+                        </Flex>
+                        <Flex width={'9%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
+                            Date of this Thorough Examination
+                        </Flex>
+                        <Flex width={'9%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
+                            Latest date of the next Thorough Examination
+                        </Flex>
+                        <Flex width={'10%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
+                            Reason for examination (See Below)
+                        </Flex>
+                        <Flex width={'8%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
+                            Detaill of any test
+                        </Flex>
+                        <Flex width={'8%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
+                            Status (See Above)
+                        </Flex>
+                        <Flex width={'6%'} p={2} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
+                            Safe to Use Yes or No
+                        </Flex>
+                    </Flex>
+                    <Flex sx={{ borderRight: '1px solid black', borderLeft: '1px solid black', borderBlockEnd: 'solid' }} flexDirection={'row'}>
+                        <Box width={'100%'} p={1} fontSize={'12px'} fontWeight={700}>
+                            <Text as={'li'}>Result of Visual Examination: SATISFACTORY</Text>
+                            <Text as={'li'}>Upon satisfactory resull of test and Visual Examination, the above-mentioned item was found satisfactory at the time of Inspection</Text>
+                            <Text as={'li'}>This certificate will remain valid as long as no modification or repair performed, and shall not be longer than the mentioned dates above.</Text>
+                        </Box>
+                    </Flex>
                 </Flex>
             )}
-        </Flex>
+        </Flex >
     );
 };
 
