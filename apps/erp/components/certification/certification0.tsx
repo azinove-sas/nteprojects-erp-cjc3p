@@ -268,35 +268,35 @@ const Certification0 = ({ ...props }: Certification0Type) => {
     }
 
 
-    if (!props.certificateStatus && !props.edit && !props.add) {
-        return (
-            <Flex
-                my={1}
-                p={3}
-                sx={{
-                    position: "relative",
-                    flexDirection: "column",
-                    minWidth: 0,
-                    wordWrap: "break-word",
-                    backgroundColor: "#fff",
-                    backgroundClip: "border-box",
-                    borderRadius: "10px",
-                    textAlign: 'center',
-                    boxShadow:
-                        "0 4px 20px 1px rgb(0 0 0 / 6%), 0 1px 4px rgb(0 0 0 / 8%)",
-                    border: "0",
-                }}
-            >
-                <Box width={'100%'} sx={{
-                    "@media (max-width: 960px)": {
-                        width: '100%',
-                    }
-                }}>
-                    <Image src="/static/images/logo/logo-transparent.webp" width={'200px'} height={'75px'} alt={'logo'} />
-                </Box>
-                <Text as={'h2'} color={'red'}>NOT APPROVED BY INSPECTOR</Text>
-            </Flex>)
-    }
+    // if (!props.certificateStatus && !props.edit && !props.add) {
+    //     return (
+    //         <Flex
+    //             my={1}
+    //             p={3}
+    //             sx={{
+    //                 position: "relative",
+    //                 flexDirection: "column",
+    //                 minWidth: 0,
+    //                 wordWrap: "break-word",
+    //                 backgroundColor: "#fff",
+    //                 backgroundClip: "border-box",
+    //                 borderRadius: "10px",
+    //                 textAlign: 'center',
+    //                 boxShadow:
+    //                     "0 4px 20px 1px rgb(0 0 0 / 6%), 0 1px 4px rgb(0 0 0 / 8%)",
+    //                 border: "0",
+    //             }}
+    //         >
+    //             <Box width={'100%'} sx={{
+    //                 "@media (max-width: 960px)": {
+    //                     width: '100%',
+    //                 }
+    //             }}>
+    //                 <Image src="/static/images/logo/logo-transparent.webp" width={'200px'} height={'75px'} alt={'logo'} />
+    //             </Box>
+    //             <Text as={'h2'} color={'red'}>NOT APPROVED BY INSPECTOR</Text>
+    //         </Flex>)
+    // }
     return (
         <Flex width={'100%'} flexDirection={'column'} alignItems={'center'}>
             <Flex justifyContent={'center'} my={3}>
