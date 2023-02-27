@@ -12,6 +12,26 @@ interface Certification0Type {
     equipmentSN?: string,
     inspectionDate?: string,
     nextInspectionDate?: string,
+
+    inspectedItemType?: string,
+    followedStandard?: string,
+    identificationNumber?: string,
+    qty?: string,
+    description?: string,
+    WLLorSWL?: string,
+    dateofLastThoroughExamination?: string,
+    dateOfThisThoroughExamination?: string,
+    latestDateOfTheNextThoroughExamination?: string,
+    reasonForExamination?: string,
+    detaillOfAnyTest?: string,
+    certificationStatus?: string,
+    safeToUseYesOrNo?: string,
+    instalation?: string,
+    sixMontly?: string,
+    twelveMontly?: string,
+    writtenScheme?: string,
+    exceptionalCircumstance?: string,
+
     inspectedBy?: string,
     edit?: true;
     print?: true;
@@ -36,6 +56,25 @@ const Certification0 = ({ ...props }: Certification0Type) => {
     const [inspectionDate, setInspectionDate] = useState<string>();
     const [nextInspectionDate, setNextInspectionDate] = useState<string>();
 
+    const [inspectedItemType, setInspectedItemType] = useState<string>();
+    const [followedStandard, setFollowedStandard] = useState<string>();
+    const [identificationNumber, setIdentificationNumber] = useState<string>();
+    const [qty, setQty] = useState<string>();
+    const [description, setDescription] = useState<string>();
+    const [WLLorSWL, setWLLorSWL] = useState<string>();
+    const [dateofLastThoroughExamination, setDateofLastThoroughExamination] = useState<string>();
+    const [dateOfThisThoroughExamination, setDateOfThisThoroughExamination] = useState<string>();
+    const [latestDateOfTheNextThoroughExamination, setLatestDateOfTheNextThoroughExamination] = useState<string>();
+    const [reasonForExamination, setReasonForExamination] = useState<string>();
+    const [detaillOfAnyTest, setDetaillOfAnyTest] = useState<string>();
+    const [certificationStatus, setCertificationStatus] = useState<string>();
+    const [safeToUseYesOrNo, setSafeToUseYesOrNo] = useState<string>();
+    const [instalation, setInstalation] = useState<string>();
+    const [sixMontly, setSixMontly] = useState<string>();
+    const [twelveMontly, setTwelveMontly] = useState<string>();
+    const [writtenScheme, setWrittenScheme] = useState<string>();
+    const [exceptionalCircumstance, setExceptionalCircumstance] = useState<string>();
+
     const [success, setSuccess] = useState<boolean>(false);
     const [error, setError] = useState<boolean>(false);
     const [one, setOne] = useState<boolean>(false);
@@ -49,8 +88,28 @@ const Certification0 = ({ ...props }: Certification0Type) => {
             setEquipmentDetail(props.equipmentDetail);
             setEquipmentSn(props.equipmentSN);
             setInspectedBy(props.inspectedBy);
+
+            setInspectedItemType(props.inspectedItemType);
+            setFollowedStandard(props.followedStandard);
             setInspectionDate(props.inspectionDate);
             setNextInspectionDate(props.nextInspectionDate);
+            setIdentificationNumber(props.identificationNumber);
+            setQty(props.qty);
+            setDescription(props.description);
+            setWLLorSWL(props.WLLorSWL);
+            setDateofLastThoroughExamination(props.dateofLastThoroughExamination);
+            setDateOfThisThoroughExamination(props.dateOfThisThoroughExamination);
+            setLatestDateOfTheNextThoroughExamination(props.latestDateOfTheNextThoroughExamination);
+            setReasonForExamination(props.reasonForExamination);
+            setDetaillOfAnyTest(props.detaillOfAnyTest);
+            setCertificationStatus(props.certificationStatus);
+            setSafeToUseYesOrNo(props.safeToUseYesOrNo);
+            setInstalation(props.instalation);
+            setSixMontly(props.sixMontly);
+            setTwelveMontly(props.twelveMontly);
+            setWrittenScheme(props.writtenScheme);
+            setExceptionalCircumstance(props.exceptionalCircumstance);
+
             setOne(true);
         }
 
@@ -90,6 +149,25 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     inspectionDate: inspectionDate,
                     nextInspectionDate: nextInspectionDate,
                     inspectedBy: inspectedBy,
+
+                    inspectedItemType: inspectedItemType,
+                    followedStandard: followedStandard,
+                    identificationNumber: identificationNumber,
+                    qty: qty,
+                    description: description,
+                    WLLorSWL: WLLorSWL,
+                    dateofLastThoroughExamination: dateofLastThoroughExamination,
+                    dateOfThisThoroughExamination: dateOfThisThoroughExamination,
+                    latestDateOfTheNextThoroughExamination: latestDateOfTheNextThoroughExamination,
+                    reasonForExamination: reasonForExamination,
+                    detaillOfAnyTest: detaillOfAnyTest,
+                    certificationStatus: certificationStatus,
+                    safeToUseYesOrNo: safeToUseYesOrNo,
+                    instalation: instalation,
+                    sixMontly: sixMontly,
+                    twelveMontly: twelveMontly,
+                    writtenScheme: writtenScheme,
+                    exceptionalCircumstance: exceptionalCircumstance,
                 },
             }),
         });
@@ -105,6 +183,25 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                 inspectionDate: inspectionDate,
                 nextInspectionDate: nextInspectionDate,
                 inspectedBy: inspectedBy,
+
+                inspectedItemType: inspectedItemType,
+                followedStandard: followedStandard,
+                identificationNumber: identificationNumber,
+                qty: qty,
+                description: description,
+                WLLorSWL: WLLorSWL,
+                dateofLastThoroughExamination: dateofLastThoroughExamination,
+                dateOfThisThoroughExamination: dateOfThisThoroughExamination,
+                latestDateOfTheNextThoroughExamination: latestDateOfTheNextThoroughExamination,
+                reasonForExamination: reasonForExamination,
+                detaillOfAnyTest: detaillOfAnyTest,
+                certificationStatus: certificationStatus,
+                safeToUseYesOrNo: safeToUseYesOrNo,
+                instalation: instalation,
+                sixMontly: sixMontly,
+                twelveMontly: twelveMontly,
+                writtenScheme: writtenScheme,
+                exceptionalCircumstance: exceptionalCircumstance,
             })
             setStickerNo(stickerNo);
             setClientName(clientName);
@@ -113,6 +210,26 @@ const Certification0 = ({ ...props }: Certification0Type) => {
             setInspectedBy(inspectedBy);
             setInspectionDate(inspectionDate);
             setNextInspectionDate(nextInspectionDate);
+
+            setInspectedItemType(inspectedItemType);
+            setFollowedStandard(followedStandard);
+            setIdentificationNumber(identificationNumber);
+            setQty(qty);
+            setDescription(description);
+            setWLLorSWL(WLLorSWL);
+            setDateofLastThoroughExamination(dateofLastThoroughExamination);
+            setDateOfThisThoroughExamination(dateOfThisThoroughExamination);
+            setLatestDateOfTheNextThoroughExamination(latestDateOfTheNextThoroughExamination);
+            setReasonForExamination(reasonForExamination);
+            setDetaillOfAnyTest(detaillOfAnyTest);
+            setCertificationStatus(certificationStatus);
+            setSafeToUseYesOrNo(safeToUseYesOrNo);
+            setInstalation(instalation);
+            setSixMontly(sixMontly);
+            setTwelveMontly(twelveMontly);
+            setWrittenScheme(writtenScheme);
+            setExceptionalCircumstance(exceptionalCircumstance);
+
             setSuccess(true);
             setError(false);
         } else {
@@ -307,7 +424,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     mx: 2, bg: '#50C878', display: 'flex', alignItems: 'center',
                 }} onClick={() => setSelectedTab(1)}><AiFillSafetyCertificate size={20} style={{ marginRight: "5px" }} />Certificate</Button>
             </Flex>
-            {!props.add && (
+            {(!props.add && props.edit) && (
                 <Flex
                     my={1}
                     p={2}
@@ -571,16 +688,30 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                             <Text fontSize={'14px'} px={1}>Location: UQAIR</Text>
                         </Box>
                         <Box width={'15%'} p={1}>
-                            test
+                            Need a meeting
                         </Box>
                     </Flex>
                     <Flex sx={{ borderRight: '1px solid black', borderLeft: '1px solid black', borderBlockEnd: 'solid' }} flexDirection={'row'}>
-                        <Box width={'50%'} p={1} sx={{ borderRight: 'solid' }} fontWeight={700}>
-                            Inspected Item Type: FORKLIFT
-                        </Box>
-                        <Box width={'50%'} p={1} fontWeight={700}>
-                            Followed Standard: ANSI B56.1
-                        </Box>
+                        <Flex width={'50%'} p={1} sx={{ borderRight: 'solid' }} fontWeight={700} alignItems={'center'}>
+                            Inspected Item Type:
+                            {props.edit ? (
+                                <Input ml={2} width={150} value={inspectedItemType} onChange={(event) => setInspectedItemType(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.inspectedItemType ? props.inspectedItemType : "......"}
+                                </>
+                            )}
+                        </Flex>
+                        <Flex width={'50%'} p={1} fontWeight={700} alignItems={'center'}>
+                            Followed Standard:
+                            {props.edit ? (
+                                <Input ml={2} width={150} value={followedStandard} onChange={(event) => setFollowedStandard(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.followedStandard ? props.followedStandard : "......"}
+                                </>
+                            )}
+                        </Flex>
                     </Flex>
                     <Flex sx={{ borderRight: '1px solid black', borderLeft: '1px solid black', borderBlockEnd: 'solid' }} flexDirection={'row'}>
                         <Flex width={'12%'} p={2} py={3} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} bg={'grey'} alignItems={'center'}>
@@ -619,37 +750,103 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     </Flex>
                     <Flex sx={{ borderRight: '1px solid black', borderLeft: '1px solid black', borderBlockEnd: 'solid' }} flexDirection={'row'} height={'75mm'}>
                         <Flex width={'12%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'}>
-                            Indetification Number
+                            {props.edit ? (
+                                <Input value={identificationNumber} onChange={(event) => setIdentificationNumber(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.identificationNumber ? props.identificationNumber : "......"}
+                                </>
+                            )}
                         </Flex>
                         <Flex width={'4%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} justifyContent={'center'}>
-                            QTY
+                            {props.edit ? (
+                                <Input value={qty} onChange={(event) => setQty(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.qty ? props.qty : "......"}
+                                </>
+                            )}
                         </Flex>
                         <Flex width={'20%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} justifyContent={'center'}>
-                            Description
+                            {props.edit ? (
+                                <Input as={'textarea'} value={description} onChange={(event) => setDescription(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.description ? props.description : "......"}
+                                </>
+                            )}
                         </Flex>
                         <Flex width={'5%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
-                            WLL or SWL
+                            {props.edit ? (
+                                <Input value={WLLorSWL} onChange={(event) => setWLLorSWL(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.WLLorSWL ? props.WLLorSWL : "......"}
+                                </>
+                            )}
                         </Flex>
                         <Flex width={'9%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
-                            Date of Last Thorough Examination
+                            {props.edit ? (
+                                <Input value={dateofLastThoroughExamination} onChange={(event) => setDateofLastThoroughExamination(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.dateofLastThoroughExamination ? props.dateofLastThoroughExamination : "......"}
+                                </>
+                            )}
                         </Flex>
                         <Flex width={'9%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
-                            Date of this Thorough Examination
+                            {props.edit ? (
+                                <Input value={dateOfThisThoroughExamination} onChange={(event) => setDateOfThisThoroughExamination(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.dateOfThisThoroughExamination ? props.dateOfThisThoroughExamination : "......"}
+                                </>
+                            )}
                         </Flex>
                         <Flex width={'9%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
-                            Latest date of the next Thorough Examination
+                            {props.edit ? (
+                                <Input value={latestDateOfTheNextThoroughExamination} onChange={(event) => setLatestDateOfTheNextThoroughExamination(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.latestDateOfTheNextThoroughExamination ? props.latestDateOfTheNextThoroughExamination : "......"}
+                                </>
+                            )}
                         </Flex>
                         <Flex width={'10%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
-                            Reason for examination (See Below)
+                            {props.edit ? (
+                                <Input value={reasonForExamination} onChange={(event) => setReasonForExamination(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.reasonForExamination ? props.reasonForExamination : "......"}
+                                </>
+                            )}
                         </Flex>
                         <Flex width={'8%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
-                            Detaill of any test
+                            {props.edit ? (
+                                <Input value={detaillOfAnyTest} onChange={(event) => setDetaillOfAnyTest(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.detaillOfAnyTest ? props.detaillOfAnyTest : "......"}
+                                </>
+                            )}
                         </Flex>
                         <Flex width={'8%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
-                            Status (See Above)
+                            {props.edit ? (
+                                <Input value={certificationStatus} onChange={(event) => setCertificationStatus(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.certificationStatus ? props.certificationStatus : "......"}
+                                </>
+                            )}
                         </Flex>
                         <Flex width={'6%'} p={2} fontWeight={700} fontSize={13} alignItems={'center'} textAlign={'center'}>
-                            Safe to Use Yes or No
+                            {props.edit ? (
+                                <Input value={safeToUseYesOrNo} onChange={(event) => setSafeToUseYesOrNo(event.target.value)} />
+                            ) : (
+                                <>
+                                    {props.safeToUseYesOrNo ? props.safeToUseYesOrNo : "......"}
+                                </>
+                            )}
                         </Flex>
                     </Flex>
                     <Flex sx={{ borderRight: '1px solid black', borderLeft: '1px solid black', borderBlockEnd: 'solid' }} flexDirection={'row'}>
@@ -659,6 +856,79 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                             <Text as={'li'}>This certificate will remain valid as long as no modification or repair performed, and shall not be longer than the mentioned dates above.</Text>
                         </Box>
                     </Flex>
+                    <Flex sx={{ borderRight: '1px solid black', borderLeft: '1px solid black', borderBlockEnd: 'solid' }} flexDirection={'row'}>
+                        <Flex width={'13%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={15} alignItems={'center'} justifyContent={'center'}>
+                            Reason for Examination
+                        </Flex>
+                        <Flex width={'27%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} justifyContent={'left'}>
+                            Instalation:
+                            {props.edit ? (
+                                <Input width={100} ml={2} value={instalation} onChange={(event) => setInstalation(event.target.value)} />
+                            ) : (
+                                <strong>
+                                    {props.instalation ? props.instalation : "......"}
+                                </strong>
+                            )}
+                        </Flex>
+                        <Flex width={'10%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} justifyContent={'center'}>
+                            6 Montly:
+                            {props.edit ? (
+                                <Input width={100} ml={2} value={sixMontly} onChange={(event) => setSixMontly(event.target.value)} />
+                            ) : (
+                                <strong>
+                                    {props.sixMontly ? props.sixMontly : "......"}
+                                </strong>
+                            )}
+                        </Flex>
+                        <Flex width={'17%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} justifyContent={'center'}>
+                            12 Montly:
+                            {props.edit ? (
+                                <Input width={100} ml={2} value={twelveMontly} onChange={(event) => setTwelveMontly(event.target.value)} />
+                            ) : (
+                                <strong>
+                                    {props.twelveMontly ? props.twelveMontly : "......"}
+                                </strong>
+                            )}
+                        </Flex>
+                        <Flex width={'17%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} justifyContent={'center'}>
+                            Written Scheme:
+                            {props.edit ? (
+                                <Input ml={2} value={writtenScheme} onChange={(event) => setWrittenScheme(event.target.value)} />
+                            ) : (
+                                <strong>
+                                    {props.writtenScheme ? props.writtenScheme : "......"}
+                                </strong>
+                            )}
+                        </Flex>
+                        <Flex width={'14%'} p={2} fontWeight={700} fontSize={13} alignItems={'center'} justifyContent={'center'}>
+                            Exceptional Circumstance:
+                            {props.edit ? (
+                                <Input ml={2} value={exceptionalCircumstance} onChange={(event) => setExceptionalCircumstance(event.target.value)} />
+                            ) : (
+                                <strong>
+                                    {props.exceptionalCircumstance ? props.exceptionalCircumstance : "......"}
+                                </strong>
+                            )}
+                        </Flex>
+                    </Flex>
+                    <Flex sx={{ borderRight: '1px solid black', borderLeft: '1px solid black', borderBlockEnd: 'solid' }} flexDirection={'row'}>
+                        Need a meeting
+                    </Flex>
+                    {props.edit && (
+                        <>
+                            {success && (
+                                <Flex justifyContent={"center"}>
+                                    <Text color={'green'}>Data has been Saved</Text>
+                                </Flex>
+                            )}
+                            {error && (
+                                <Flex justifyContent={"center"}>
+                                    <Text color={'red'}>Error, please contact an Administrator!</Text>
+                                </Flex>
+                            )}
+                            <Button mt={2} bg={'red'} onClick={() => saveData()}>Save</Button>
+                        </>
+                    )}
                 </Flex>
             )}
         </Flex >
