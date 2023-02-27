@@ -13,6 +13,10 @@ interface Certification0Type {
     inspectionDate?: string,
     nextInspectionDate?: string,
 
+    reportNo?: string;
+    customerNo?: string;
+    dateOfReport?: string;
+    colourCode?: string;
     inspectedItemType?: string,
     followedStandard?: string,
     identificationNumber?: string,
@@ -56,6 +60,10 @@ const Certification0 = ({ ...props }: Certification0Type) => {
     const [inspectionDate, setInspectionDate] = useState<string>();
     const [nextInspectionDate, setNextInspectionDate] = useState<string>();
 
+    const [reportNo, setReportNo] = useState<string>();
+    const [customerNo, setCustomerNo] = useState<string>();
+    const [dateOfReport, setDateOfReport] = useState<string>();
+    const [colourCode, setColourCode] = useState<string>();
     const [inspectedItemType, setInspectedItemType] = useState<string>();
     const [followedStandard, setFollowedStandard] = useState<string>();
     const [identificationNumber, setIdentificationNumber] = useState<string>();
@@ -89,6 +97,10 @@ const Certification0 = ({ ...props }: Certification0Type) => {
             setEquipmentSn(props.equipmentSN);
             setInspectedBy(props.inspectedBy);
 
+            setReportNo(props.reportNo);
+            setCustomerNo(props.customerNo);
+            setDateOfReport(props.dateOfReport);
+            setColourCode(props.colourCode);
             setInspectedItemType(props.inspectedItemType);
             setFollowedStandard(props.followedStandard);
             setInspectionDate(props.inspectionDate);
@@ -150,6 +162,10 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                     nextInspectionDate: nextInspectionDate,
                     inspectedBy: inspectedBy,
 
+                    reportNo: reportNo,
+                    customerNo: customerNo,
+                    dateOfReport: dateOfReport,
+                    colourCode: colourCode,
                     inspectedItemType: inspectedItemType,
                     followedStandard: followedStandard,
                     identificationNumber: identificationNumber,
@@ -184,6 +200,10 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                 nextInspectionDate: nextInspectionDate,
                 inspectedBy: inspectedBy,
 
+                reportNo: reportNo,
+                customerNo: customerNo,
+                dateOfReport: dateOfReport,
+                colourCode: colourCode,
                 inspectedItemType: inspectedItemType,
                 followedStandard: followedStandard,
                 identificationNumber: identificationNumber,
@@ -211,6 +231,10 @@ const Certification0 = ({ ...props }: Certification0Type) => {
             setInspectionDate(inspectionDate);
             setNextInspectionDate(nextInspectionDate);
 
+            setReportNo(reportNo);
+            setCustomerNo(customerNo);
+            setDateOfReport(dateOfReport);
+            setColourCode(colourCode);
             setInspectedItemType(inspectedItemType);
             setFollowedStandard(followedStandard);
             setIdentificationNumber(identificationNumber);
@@ -662,17 +686,45 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         </Flex>
                     </Flex>
                     <Flex flexDirection={'row'} alignItems={'end'}>
-                        <Flex width={'25%'} justifyContent={'start'}>
-                            <Text as={'h1'} fontSize={'12px'} px={1}>Report No: CRT.NO.ID-0021593.23</Text>
+                        <Flex width={'25%'} justifyContent={'start'} alignItems={'center'}>
+                            <Text as={'h1'} fontSize={'12px'} px={1}>Report No:</Text>
+                            {props.edit ? (
+                                <Input height={25} width={100} ml={2} value={reportNo} onChange={(event) => setReportNo(event.target.value)} />
+                            ) : (
+                                <strong>
+                                    {props.reportNo ? props.reportNo : "......"}
+                                </strong>
+                            )}
                         </Flex>
-                        <Flex width={'25%'} justifyContent={'center'}>
-                            <Text as={'h1'} fontSize={'12px'} px={1}>Customer No: ________</Text>
+                        <Flex width={'25%'} justifyContent={'center'} alignItems={'center'}>
+                            <Text as={'h1'} fontSize={'12px'} px={1}>Customer No:</Text>
+                            {props.edit ? (
+                                <Input height={25} width={100} ml={2} value={customerNo} onChange={(event) => setCustomerNo(event.target.value)} />
+                            ) : (
+                                <strong>
+                                    {props.customerNo ? props.customerNo : "......"}
+                                </strong>
+                            )}
                         </Flex>
-                        <Flex width={'25%'} justifyContent={'center'}>
-                            <Text as={'h1'} fontSize={'12px'} px={1}>Date of Report: 01 Feb 2023</Text>
+                        <Flex width={'25%'} justifyContent={'center'} alignItems={'center'}>
+                            <Text as={'h1'} fontSize={'12px'} px={1}>Date of Report:</Text>
+                            {props.edit ? (
+                                <Input height={25} width={100} ml={2} value={dateOfReport} onChange={(event) => setDateOfReport(event.target.value)} />
+                            ) : (
+                                <strong>
+                                    {props.dateOfReport ? props.dateOfReport : "......"}
+                                </strong>
+                            )}
                         </Flex>
-                        <Flex width={'25%'} justifyContent={'center'}>
-                            <Text as={'h1'} fontSize={'12px'} px={1}>Colour Code (If required): N/A</Text>
+                        <Flex width={'25%'} justifyContent={'center'} alignItems={'center'}>
+                            <Text as={'h1'} fontSize={'12px'} px={1}>Colour Code (If required):</Text>
+                            {props.edit ? (
+                                <Input height={25} width={50} ml={2} value={colourCode} onChange={(event) => setColourCode(event.target.value)} />
+                            ) : (
+                                <strong>
+                                    {props.colourCode ? props.colourCode : "......"}
+                                </strong>
+                            )}
                         </Flex>
                     </Flex>
                     <Flex sx={{ border: '1px solid black', }} flexDirection={'row'} mt={2}>
@@ -769,7 +821,7 @@ const Certification0 = ({ ...props }: Certification0Type) => {
                         </Flex>
                         <Flex width={'20%'} p={2} sx={{ borderRight: 'solid' }} fontWeight={700} fontSize={13} alignItems={'center'} justifyContent={'center'}>
                             {props.edit ? (
-                                <Input as={'textarea'} value={description} onChange={(event) => setDescription(event.target.value)} />
+                                <Input as={'textarea'} sx={{ whiteSpace: 'pre-wrap' }} value={description} onChange={(event) => setDescription(event.target.value)} />
                             ) : (
                                 <>
                                     {props.description ? props.description : "......"}
